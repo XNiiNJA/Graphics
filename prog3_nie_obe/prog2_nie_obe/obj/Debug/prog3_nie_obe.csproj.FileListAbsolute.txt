@@ -1,0 +1,14 @@
+C:\Users\Grant\Academics\Fall\2017\Graphics\prog3_nie_obe\prog2_nie_obe\bin\Debug\prog3_nie_obe.exe.config
+J:\Fall_2017\Graphics\Prog3\prog3_nie_obe\prog2_nie_obe\bin\Debug\prog3_nie_obe.exe.config
+K:\Courses\CSSE\tianb\cs3920_cs5920\nie_obe\prog3_nie_obe\prog2_nie_obe\bin\Debug\prog3_nie_obe.exe.config
+K:\Courses\CSSE\tianb\cs3920_cs5920\nie_obe\prog3_nie_obe\prog2_nie_obe\obj\Debug\prog3_nie_obe.csprojResolveAssemblyReference.cache
+K:\Courses\CSSE\tianb\cs3920_cs5920\nie_obe\prog3_nie_obe\prog2_nie_obe\obj\Debug\prog3_nie_obe.Form1.resources
+K:\Courses\CSSE\tianb\cs3920_cs5920\nie_obe\prog3_nie_obe\prog2_nie_obe\obj\Debug\prog3_nie_obe.Properties.Resources.resources
+K:\Courses\CSSE\tianb\cs3920_cs5920\nie_obe\prog3_nie_obe\prog2_nie_obe\obj\Debug\prog3_nie_obe.csproj.GenerateResource.Cache
+K:\Courses\CSSE\tianb\cs3920_cs5920\nie_obe\prog3_nie_obe\prog2_nie_obe\bin\Debug\prog3_nie_obe.exe
+K:\Courses\CSSE\tianb\cs3920_cs5920\nie_obe\prog3_nie_obe\prog2_nie_obe\bin\Debug\prog3_nie_obe.pdb
+K:\Courses\CSSE\tianb\cs3920_cs5920\nie_obe\prog3_nie_obe\prog2_nie_obe\bin\Debug\OpenTK.pdb
+K:\Courses\CSSE\tianb\cs3920_cs5920\nie_obe\prog3_nie_obe\prog2_nie_obe\bin\Debug\OpenTK.xml
+K:\Courses\CSSE\tianb\cs3920_cs5920\nie_obe\prog3_nie_obe\prog2_nie_obe\bin\Debug\OpenTK.GLControl.xml
+K:\Courses\CSSE\tianb\cs3920_cs5920\nie_obe\prog3_nie_obe\prog2_nie_obe\obj\Debug\prog3_nie_obe.exe
+K:\Courses\CSSE\tianb\cs3920_cs5920\nie_obe\prog3_nie_obe\prog2_nie_obe\obj\Debug\prog3_nie_obe.pdb
