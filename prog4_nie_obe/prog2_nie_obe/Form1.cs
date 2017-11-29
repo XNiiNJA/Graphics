@@ -44,9 +44,6 @@ namespace prog3_nie_obe
          */
         private void Form1_Load(object sender, EventArgs e)
         {
-            
-            
-
             redrawWorld();
             updateCameraPosition();
             trkTime.Value = tmrMove.Interval;
@@ -312,9 +309,9 @@ namespace prog3_nie_obe
                 trkX.Value = (int)camX;
                 redrawWorld();
             }
-            catch
+            catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
            
 
@@ -331,9 +328,9 @@ namespace prog3_nie_obe
                 trkY.Value = (int)camY;
                 redrawWorld();
             }
-            catch
+            catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
 
         }
@@ -349,9 +346,9 @@ namespace prog3_nie_obe
                 trkZ.Value = (int)camZ;
                 redrawWorld();
             }
-            catch
+            catch (Exception ex)
             {
-
+                Console.WriteLine(ex.Message);
             }
 
         }
@@ -412,6 +409,8 @@ namespace prog3_nie_obe
             int red = lightRedBar.Value;
             int green = lightGrnBar.Value;
             int blue = lightBlueBar.Value;
+
+            groupBox2.BackColor = Color.FromArgb(red, green, blue);
         }
 
         private void globalAmbientNum_ValueChanged(object sender, EventArgs e)
