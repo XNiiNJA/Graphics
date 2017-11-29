@@ -25,7 +25,9 @@ namespace prog3_nie_obe
         private const int DEFAULT_CAM_X = 5;
         private const int DEFAULT_CAM_Y = 5;
         private const int DEFAULT_CAM_Z = 5;
-        
+
+        private Decimal globalAmbient;
+
         /*
          * Set current rendering mode
          */
@@ -38,6 +40,10 @@ namespace prog3_nie_obe
         private float camX = -5;
         private float camY = 0;
         private float camZ = 0;
+
+        Vector3 lightPos = new Vector3(0.0f, 0.0f, 0.0f);
+
+        Vector3 lightColor = new Vector3(1.0f, 1.0f, 1.0f);
 
         /*
          *  Prepares the projection matrics and loads the figure from a file.
@@ -57,7 +63,12 @@ namespace prog3_nie_obe
             
             Matrix4 projMat = Matrix4.Zero;
             Matrix4 lookat = Matrix4.Zero;
+
+            GL.ClearColor(0.0f, 0.0f, 0.0f, 0.0f);
+
+            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
             
+
             //GL.MatrixMode(MatrixMode.Projection);
 
             if (isOrtho)
@@ -70,8 +81,6 @@ namespace prog3_nie_obe
                 txtPerspective.Text = "Perspective";
                 projMat = Matrix4.CreatePerspectiveOffCenter(
                     -2.0f, 2.0f, -2.0f, 2.0f, 2.0f, 80.0f);
-
-
             }
 
             //GL.LoadMatrix(ref projMat);
@@ -85,14 +94,19 @@ namespace prog3_nie_obe
             int lookatMatLoc = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle, "ViewMatrix");
             GL.UniformMatrix4(lookatMatLoc, false, ref lookat);
 
+            int ambientLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle, "GlobalAmbient");
+            GL.Uniform1(ambientLocation, (float)globalAmbient);
+
+            int lgtPosLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle, "LightPosition");
+            GL.Uniform3(lgtPosLocation, lightPos);
+
+            int lgtColorLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle, "LightColor");
+            GL.Uniform3(lgtColorLocation, lightColor);
+
             //GL.MatrixMode(MatrixMode.Modelview);
 
             //GL.LoadMatrix(ref lookat);
 
-            GL.ClearColor(0.0f, 0.0f, 0.0f, 0.0f);
-
-            GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-            
             figList.drawAll(ref lookat);
 
             glControl1.SwapBuffers();
@@ -377,9 +391,10 @@ namespace prog3_nie_obe
         {
             try
             {
-                int lightX = Convert.ToInt32(lightXtxt.Text);
-                int lightY = Convert.ToInt32(lightYtxt.Text);
-                int lightZ = Convert.ToInt32(lightZtxt.Text);
+                lightPos.X = (float)Convert.ToDecimal(lightXtxt.Text);
+                lightPos.Y = (float)Convert.ToDecimal(lightYtxt.Text);
+                lightPos.Z = (float)Convert.ToDecimal(lightZtxt.Text);
+                
             }
 
             catch (Exception ex)
@@ -410,12 +425,16 @@ namespace prog3_nie_obe
             int green = lightGrnBar.Value;
             int blue = lightBlueBar.Value;
 
+            lightColor.X = (float)red / (float)lightRedBar.Maximum;
+            lightColor.Y = (float)green / (float)lightGrnBar.Maximum;
+            lightColor.Z = (float)blue / (float)lightBlueBar.Maximum;
+            
             groupBox2.BackColor = Color.FromArgb(red, green, blue);
         }
 
         private void globalAmbientNum_ValueChanged(object sender, EventArgs e)
         {
-            Decimal globalAmbient = globalAmbientNum.Value;
+            globalAmbient = globalAmbientNum.Value;
         }
     }
 }

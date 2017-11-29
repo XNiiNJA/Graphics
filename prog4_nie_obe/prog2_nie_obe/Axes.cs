@@ -38,12 +38,12 @@ public class Axes
 
     private Axes()
     {
-        
+        GL.UseProgram(ShaderLoader.Instance.ProgramHandle);
 
         // Make the Vertex Buffer Object (VBO) and Vertex Array Object (VAO)
         GL.GenBuffers(1, out vboHandle);
         GL.BindBuffer(BufferTarget.ArrayBuffer, vboHandle);
-        GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(verts.Length * BlittableValueType.StrideOf(verts)), verts, BufferUsageHint.StaticDraw);
+        GL.BufferData(BufferTarget.ArrayBuffer, (IntPtr)(verts.Length * BlittableValueType.StrideOf(verts)), verts, BufferUsageHint.StreamDraw);
 
         GL.GenVertexArrays(1, out vaoHandle);
         GL.BindVertexArray(vaoHandle);
@@ -54,29 +54,33 @@ public class Axes
 
         //GL.VertexPointer(3, VertexPointerType.Float, BlittableValueType.StrideOf(verts), (IntPtr)0);
         //GL.ColorPointer(3, ColorPointerType.Float, BlittableValueType.StrideOf(verts), (IntPtr)12);
-
-
-        int vertNormalLoc = GL.GetAttribLocation(ShaderLoader.Instance.ProgramHandle, "VertexNormal");
-        GL.EnableVertexAttribArray(vertNormalLoc);
-        GL.VertexAttribPointer(vertNormalLoc, 3, VertexAttribPointerType.Float, true, BlittableValueType.StrideOf(verts), (IntPtr)24);
-
+        
         int vertPositionLoc = GL.GetAttribLocation(ShaderLoader.Instance.ProgramHandle, "VertexPosition");
         GL.EnableVertexAttribArray(vertPositionLoc);
-        GL.VertexAttribPointer(vertPositionLoc, 3, VertexAttribPointerType.Float, true, BlittableValueType.StrideOf(verts), (IntPtr)0);
+        GL.VertexAttribPointer(vertPositionLoc, 3, VertexAttribPointerType.Float, false, BlittableValueType.StrideOf(verts), (IntPtr)0);
 
         int vertColorLoc = GL.GetAttribLocation(ShaderLoader.Instance.ProgramHandle, "VertexColor");
         GL.EnableVertexAttribArray(vertColorLoc);
-        GL.VertexAttribPointer(vertColorLoc, 3, VertexAttribPointerType.Float, true, BlittableValueType.StrideOf(verts), (IntPtr)12);
+        GL.VertexAttribPointer(vertColorLoc, 3, VertexAttribPointerType.Float, false, BlittableValueType.StrideOf(verts), (IntPtr)12);
 
-
+        int vertNormalLoc = GL.GetAttribLocation(ShaderLoader.Instance.ProgramHandle, "VertexNormal");
+        GL.EnableVertexAttribArray(vertNormalLoc);
+        GL.VertexAttribPointer(vertNormalLoc, 3, VertexAttribPointerType.Float, false, BlittableValueType.StrideOf(verts), (IntPtr)24);
 
         GL.BindVertexArray(0);
+        GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+        GL.UseProgram(0);
     }
     
     public void Show()
     {
+        GL.BindBuffer(BufferTarget.ArrayBuffer, vboHandle);
+        GL.UseProgram(ShaderLoader.Instance.ProgramHandle);
         GL.BindVertexArray(vaoHandle);
         GL.DrawArrays(PrimitiveType.Lines, 0, verts.Length);
         GL.BindVertexArray(0);
+        GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+        GL.UseProgram(0);
+        
     }
 }
