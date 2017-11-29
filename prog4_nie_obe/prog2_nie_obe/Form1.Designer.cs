@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.glControl1 = new OpenTK.GLControl();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtZ = new System.Windows.Forms.TextBox();
             this.txtY = new System.Windows.Forms.TextBox();
             this.txtX = new System.Windows.Forms.TextBox();
@@ -46,22 +47,21 @@
             this.togglePerspectiveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tmrMove = new System.Windows.Forms.Timer(this.components);
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.globalAmbientNum = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
             this.lightXtxt = new System.Windows.Forms.TextBox();
+            this.lightBlueBar = new System.Windows.Forms.TrackBar();
             this.lightYtxt = new System.Windows.Forms.TextBox();
             this.lightZtxt = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.lightRedBar = new System.Windows.Forms.TrackBar();
             this.lightGrnBar = new System.Windows.Forms.TrackBar();
-            this.lightBlueBar = new System.Windows.Forms.TrackBar();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.globalAmbientNum = new System.Windows.Forms.NumericUpDown();
-            this.label8 = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.lightRedBar = new System.Windows.Forms.TrackBar();
+            this.label4 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trkTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trkZ)).BeginInit();
@@ -69,10 +69,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.trkX)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lightRedBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lightGrnBar)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lightBlueBar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.globalAmbientNum)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lightBlueBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lightGrnBar)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lightRedBar)).BeginInit();
             this.SuspendLayout();
             // 
             // glControl1
@@ -104,6 +104,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "X, Y, Z values of the View Reference Point (Eyeball) looking at (0,0,0) with Y up" +
     "";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 81);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "Ticker";
             // 
             // txtZ
             // 
@@ -237,15 +246,6 @@
             this.tmrMove.Interval = 1;
             this.tmrMove.Tick += new System.EventHandler(this.tmrMove_Tick);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(7, 81);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(37, 13);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "Ticker";
-            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.label8);
@@ -269,119 +269,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Light Settings";
             // 
-            // lightXtxt
+            // label8
             // 
-            this.lightXtxt.Location = new System.Drawing.Point(47, 31);
-            this.lightXtxt.Name = "lightXtxt";
-            this.lightXtxt.Size = new System.Drawing.Size(100, 20);
-            this.lightXtxt.TabIndex = 7;
-            this.lightXtxt.TextChanged += new System.EventHandler(this.lightXtxt_TextChanged);
-            // 
-            // lightYtxt
-            // 
-            this.lightYtxt.Location = new System.Drawing.Point(47, 57);
-            this.lightYtxt.Name = "lightYtxt";
-            this.lightYtxt.Size = new System.Drawing.Size(100, 20);
-            this.lightYtxt.TabIndex = 7;
-            this.lightYtxt.TextChanged += new System.EventHandler(this.lightYtxt_TextChanged);
-            // 
-            // lightZtxt
-            // 
-            this.lightZtxt.Location = new System.Drawing.Point(47, 83);
-            this.lightZtxt.Name = "lightZtxt";
-            this.lightZtxt.Size = new System.Drawing.Size(100, 20);
-            this.lightZtxt.TabIndex = 8;
-            this.lightZtxt.TextChanged += new System.EventHandler(this.lightZtxt_TextChanged);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 34);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(20, 13);
-            this.label2.TabIndex = 8;
-            this.label2.Text = "X -";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(21, 60);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(20, 13);
-            this.label3.TabIndex = 9;
-            this.label3.Text = "Y -";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(21, 86);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(20, 13);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Z -";
-            // 
-            // lightRedBar
-            // 
-            this.lightRedBar.LargeChange = 10;
-            this.lightRedBar.Location = new System.Drawing.Point(47, 126);
-            this.lightRedBar.Maximum = 255;
-            this.lightRedBar.Name = "lightRedBar";
-            this.lightRedBar.Size = new System.Drawing.Size(104, 45);
-            this.lightRedBar.SmallChange = 5;
-            this.lightRedBar.TabIndex = 11;
-            this.lightRedBar.TickFrequency = 10;
-            this.lightRedBar.Scroll += new System.EventHandler(this.lightRedBar_Scroll);
-            // 
-            // lightGrnBar
-            // 
-            this.lightGrnBar.LargeChange = 10;
-            this.lightGrnBar.Location = new System.Drawing.Point(47, 177);
-            this.lightGrnBar.Maximum = 255;
-            this.lightGrnBar.Name = "lightGrnBar";
-            this.lightGrnBar.Size = new System.Drawing.Size(104, 45);
-            this.lightGrnBar.SmallChange = 5;
-            this.lightGrnBar.TabIndex = 12;
-            this.lightGrnBar.TickFrequency = 10;
-            this.lightGrnBar.Scroll += new System.EventHandler(this.lightGrnBar_Scroll);
-            // 
-            // lightBlueBar
-            // 
-            this.lightBlueBar.LargeChange = 10;
-            this.lightBlueBar.Location = new System.Drawing.Point(47, 228);
-            this.lightBlueBar.Maximum = 255;
-            this.lightBlueBar.Name = "lightBlueBar";
-            this.lightBlueBar.Size = new System.Drawing.Size(104, 45);
-            this.lightBlueBar.SmallChange = 5;
-            this.lightBlueBar.TabIndex = 13;
-            this.lightBlueBar.TickFrequency = 10;
-            this.lightBlueBar.Scroll += new System.EventHandler(this.lightBlueBar_Scroll);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(14, 126);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(27, 13);
-            this.label5.TabIndex = 14;
-            this.label5.Text = "Red";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(14, 177);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(36, 13);
-            this.label6.TabIndex = 15;
-            this.label6.Text = "Green";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(22, 228);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(28, 13);
-            this.label7.TabIndex = 16;
-            this.label7.Text = "Blue";
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(6, 281);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(78, 13);
+            this.label8.TabIndex = 19;
+            this.label8.Text = "Global Ambient";
             // 
             // globalAmbientNum
             // 
@@ -400,16 +295,126 @@
             this.globalAmbientNum.Name = "globalAmbientNum";
             this.globalAmbientNum.Size = new System.Drawing.Size(68, 20);
             this.globalAmbientNum.TabIndex = 17;
+            this.globalAmbientNum.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.globalAmbientNum.ValueChanged += new System.EventHandler(this.globalAmbientNum_ValueChanged);
             // 
-            // label8
+            // label7
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(6, 281);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(78, 13);
-            this.label8.TabIndex = 19;
-            this.label8.Text = "Global Ambient";
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(22, 228);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(28, 13);
+            this.label7.TabIndex = 16;
+            this.label7.Text = "Blue";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(14, 177);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(36, 13);
+            this.label6.TabIndex = 15;
+            this.label6.Text = "Green";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(14, 126);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(27, 13);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Red";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(21, 34);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(20, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "X -";
+            // 
+            // lightXtxt
+            // 
+            this.lightXtxt.Location = new System.Drawing.Point(47, 31);
+            this.lightXtxt.Name = "lightXtxt";
+            this.lightXtxt.Size = new System.Drawing.Size(100, 20);
+            this.lightXtxt.TabIndex = 7;
+            this.lightXtxt.TextChanged += new System.EventHandler(this.lightXtxt_TextChanged);
+            // 
+            // lightBlueBar
+            // 
+            this.lightBlueBar.LargeChange = 10;
+            this.lightBlueBar.Location = new System.Drawing.Point(47, 228);
+            this.lightBlueBar.Maximum = 255;
+            this.lightBlueBar.Name = "lightBlueBar";
+            this.lightBlueBar.Size = new System.Drawing.Size(104, 45);
+            this.lightBlueBar.SmallChange = 5;
+            this.lightBlueBar.TabIndex = 13;
+            this.lightBlueBar.TickFrequency = 10;
+            this.lightBlueBar.Scroll += new System.EventHandler(this.lightBlueBar_Scroll);
+            // 
+            // lightYtxt
+            // 
+            this.lightYtxt.Location = new System.Drawing.Point(47, 57);
+            this.lightYtxt.Name = "lightYtxt";
+            this.lightYtxt.Size = new System.Drawing.Size(100, 20);
+            this.lightYtxt.TabIndex = 7;
+            this.lightYtxt.TextChanged += new System.EventHandler(this.lightYtxt_TextChanged);
+            // 
+            // lightZtxt
+            // 
+            this.lightZtxt.Location = new System.Drawing.Point(47, 83);
+            this.lightZtxt.Name = "lightZtxt";
+            this.lightZtxt.Size = new System.Drawing.Size(100, 20);
+            this.lightZtxt.TabIndex = 8;
+            this.lightZtxt.TextChanged += new System.EventHandler(this.lightZtxt_TextChanged);
+            // 
+            // lightGrnBar
+            // 
+            this.lightGrnBar.LargeChange = 10;
+            this.lightGrnBar.Location = new System.Drawing.Point(47, 177);
+            this.lightGrnBar.Maximum = 255;
+            this.lightGrnBar.Name = "lightGrnBar";
+            this.lightGrnBar.Size = new System.Drawing.Size(104, 45);
+            this.lightGrnBar.SmallChange = 5;
+            this.lightGrnBar.TabIndex = 12;
+            this.lightGrnBar.TickFrequency = 10;
+            this.lightGrnBar.Scroll += new System.EventHandler(this.lightGrnBar_Scroll);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(21, 60);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(20, 13);
+            this.label3.TabIndex = 9;
+            this.label3.Text = "Y -";
+            // 
+            // lightRedBar
+            // 
+            this.lightRedBar.LargeChange = 10;
+            this.lightRedBar.Location = new System.Drawing.Point(47, 126);
+            this.lightRedBar.Maximum = 255;
+            this.lightRedBar.Name = "lightRedBar";
+            this.lightRedBar.Size = new System.Drawing.Size(104, 45);
+            this.lightRedBar.SmallChange = 5;
+            this.lightRedBar.TabIndex = 11;
+            this.lightRedBar.TickFrequency = 10;
+            this.lightRedBar.Scroll += new System.EventHandler(this.lightRedBar_Scroll);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(21, 86);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(20, 13);
+            this.label4.TabIndex = 10;
+            this.label4.Text = "Z -";
             // 
             // Form1
             // 
@@ -438,10 +443,10 @@
             this.menuStrip1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.lightRedBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lightGrnBar)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.lightBlueBar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.globalAmbientNum)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lightBlueBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lightGrnBar)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.lightRedBar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

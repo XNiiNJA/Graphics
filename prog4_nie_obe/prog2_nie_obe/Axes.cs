@@ -14,7 +14,7 @@ public class Axes
     private VertexData[] verts =
     {
       /*Set up X Axis*/
-      new VertexData(new Vector3(0.0f, 0.0f, 0.0f), new Vector3(1.0f, 0.0f, 0.0f), new Vector3(1.0f, 1.0f, 1.0f)),
+      new VertexData(new Vector3(0.0f, 0.0f, 0.0f), new Vector3(1.0f, 0.0f, 0.0f), new Vector3(0.0f, 0.0f, 0.0f)),
       new VertexData(new Vector3(200.0f, 0.0f, 0.0f), new Vector3(1.0f, 0.0f, 0.0f), new Vector3(1.0f, 1.0f, 1.0f)),
 
       /*Set up Y Axis*/
@@ -77,6 +77,24 @@ public class Axes
         GL.BindBuffer(BufferTarget.ArrayBuffer, vboHandle);
         GL.UseProgram(ShaderLoader.Instance.ProgramHandle);
         GL.BindVertexArray(vaoHandle);
+
+        Matrix4 identity = Matrix4.Identity;
+
+        int normalMatrixLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
+                       "NormalMatrix");
+        GL.UniformMatrix4(normalMatrixLocation, false, ref identity);
+
+        int modelMatrixLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
+                                           "ModelMatrix");
+        GL.UniformMatrix4(modelMatrixLocation, false, ref identity);
+
+
+
+        int shininessLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
+                               "Shininess");
+        GL.Uniform1(ShaderLoader.Instance.ProgramHandle, 0);
+
+
         GL.DrawArrays(PrimitiveType.Lines, 0, verts.Length);
         GL.BindVertexArray(0);
         GL.BindBuffer(BufferTarget.ArrayBuffer, 0);

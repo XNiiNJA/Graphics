@@ -133,6 +133,27 @@ public class VertexDataList
         // You need to do something like: vertList[i + 2] = new VertexData(vertList[i + 2].Position, vertList[i + 2].Color, normal);
 
 
+        for (int i = 0; i < vertList.Count; i += 3)
+        {
+
+            Vector3 first = vertList[i].Position - vertList[i + 1].Position;
+
+            Vector3 second = vertList[i].Position - vertList[i + 2].Position;
+
+            Vector3 normal = Vector3.Cross(first, second);
+
+            vertList[i] = new VertexData(vertList[i].Position, vertList[i].Color, normal);
+            vertList[i+1] = new VertexData(vertList[i+1].Position, vertList[i+1].Color, normal);
+            vertList[i+2] = new VertexData(vertList[i+2].Position, vertList[i+2].Color, normal);
+
+
+        }
+
+
+
+
+
+
     }
 
     private bool LookForInVMRL(string s)

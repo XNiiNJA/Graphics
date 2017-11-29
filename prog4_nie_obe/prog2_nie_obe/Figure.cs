@@ -90,18 +90,29 @@ namespace prog3_nie_obe
             //GL.VertexPointer(3, VertexPointerType.Float, BlittableValueType.StrideOf(verts), (IntPtr)0);
             //GL.ColorPointer(3, ColorPointerType.Float, BlittableValueType.StrideOf(verts), (IntPtr)12);
 
+            int vertPositionLoc = GL.GetAttribLocation(ShaderLoader.Instance.ProgramHandle, "VertexPosition");
+            GL.EnableVertexAttribArray(vertPositionLoc);
+            GL.VertexAttribPointer(vertPositionLoc, 3, VertexAttribPointerType.Float, false, BlittableValueType.StrideOf(verts), (IntPtr)0);
+
             int vertColorLoc = GL.GetAttribLocation(ShaderLoader.Instance.ProgramHandle, "VertexColor");
             GL.EnableVertexAttribArray(vertColorLoc);
-            GL.VertexAttribPointer(vertColorLoc, 3, VertexAttribPointerType.Float, true, BlittableValueType.StrideOf(verts), (IntPtr)0);
+            GL.VertexAttribPointer(vertColorLoc, 3, VertexAttribPointerType.Float, false, BlittableValueType.StrideOf(verts), (IntPtr)12);
+
+            int vertNormalLoc = GL.GetAttribLocation(ShaderLoader.Instance.ProgramHandle, "VertexNormal");
+            GL.EnableVertexAttribArray(vertNormalLoc);
+            GL.VertexAttribPointer(vertNormalLoc, 3, VertexAttribPointerType.Float, false, BlittableValueType.StrideOf(verts), (IntPtr)24);
 
 
             GL.BindVertexArray(0);
-            
+            GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+            GL.UseProgram(0);
+
         }
 
         public void Show(ref Matrix4 lookat)
         {
-            
+            GL.BindBuffer(BufferTarget.ArrayBuffer, vboHandle);
+            GL.UseProgram(ShaderLoader.Instance.ProgramHandle);
             GL.BindVertexArray(vaoHandle);
             
             //Set the matrix mode to modelview
@@ -115,13 +126,16 @@ namespace prog3_nie_obe
             normalMatrix.Invert();
             normalMatrix.Transpose();
 
+
+            int normalMatrixLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
+                                   "NormalMatrix");
+            GL.UniformMatrix4(normalMatrixLocation, false, ref normalMatrix);
+
             int modelMatrixLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
                                                "ModelMatrix");
             GL.UniformMatrix4(modelMatrixLocation, false, ref displayMatrix);
 
-            int viewMatrixLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
-                                   "ViewMatrix");
-            GL.UniformMatrix4(viewMatrixLocation, false, ref lookat);
+
 
             int shininessLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
                                    "Shininess");
@@ -132,6 +146,8 @@ namespace prog3_nie_obe
 
             GL.DrawArrays(PrimitiveType.Triangles, 0, verts.Length);
             GL.BindVertexArray(0);
+            GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+            GL.UseProgram(0);
         }
         
         public float Shininess { get; set; }

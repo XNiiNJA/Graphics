@@ -50,7 +50,7 @@ namespace prog3_nie_obe
          */
         private void Form1_Load(object sender, EventArgs e)
         {
-            redrawWorld();
+
             updateCameraPosition();
             trkTime.Value = tmrMove.Interval;
         }
@@ -63,6 +63,7 @@ namespace prog3_nie_obe
             
             Matrix4 projMat = Matrix4.Zero;
             Matrix4 lookat = Matrix4.Zero;
+            
 
             GL.ClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
@@ -82,7 +83,7 @@ namespace prog3_nie_obe
                 projMat = Matrix4.CreatePerspectiveOffCenter(
                     -2.0f, 2.0f, -2.0f, 2.0f, 2.0f, 80.0f);
             }
-
+            GL.UseProgram(ShaderLoader.Instance.ProgramHandle);
             //GL.LoadMatrix(ref projMat);
 
             int projMatrixLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
@@ -103,6 +104,12 @@ namespace prog3_nie_obe
             int lgtColorLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle, "LightColor");
             GL.Uniform3(lgtColorLocation, lightColor);
 
+            int viewMatrixLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
+                       "ViewMatrix");
+            GL.UniformMatrix4(viewMatrixLocation, false, ref lookat);
+
+            GL.UseProgram(0);
+
             //GL.MatrixMode(MatrixMode.Modelview);
 
             //GL.LoadMatrix(ref lookat);
@@ -120,7 +127,7 @@ namespace prog3_nie_obe
          */ 
         private void glControl1_Load(object sender, EventArgs e)
         {
-            GL.Enable(EnableCap.DepthTest);
+            //GL.Enable(EnableCap.DepthTest);
 
             String vertShaderFileName = "Prog4_VS.glsl";
             String fragShaderFileName = "Prog4_FS.glsl";
@@ -140,6 +147,8 @@ namespace prog3_nie_obe
             GL.MatrixMode(MatrixMode.Modelview);
 
             GL.LoadMatrix(ref lookat);*/
+
+            globalAmbient = globalAmbientNum.Value;
 
             figList = new FigureList();
             
