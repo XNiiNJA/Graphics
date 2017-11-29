@@ -126,7 +126,7 @@ namespace prog3_nie_obe
             GL.DrawArrays(PrimitiveType.Triangles, 0, verts.Length);
             GL.BindVertexArray(0);
         }
-
+        
         public float Shininess { get; set; }
 
         public void loadInitTranslation()
