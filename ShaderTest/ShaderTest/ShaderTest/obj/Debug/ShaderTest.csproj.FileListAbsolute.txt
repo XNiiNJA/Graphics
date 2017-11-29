@@ -12,3 +12,17 @@ C:\Users\Grant\Academics\Fall\2017\Graphics\ShaderTest\ShaderTest\ShaderTest\obj
 C:\Users\Grant\Academics\Fall\2017\Graphics\ShaderTest\ShaderTest\ShaderTest\obj\Debug\ShaderTest.csproj.GenerateResource.Cache
 C:\Users\Grant\Academics\Fall\2017\Graphics\ShaderTest\ShaderTest\ShaderTest\obj\Debug\ShaderTest.exe
 C:\Users\Grant\Academics\Fall\2017\Graphics\ShaderTest\ShaderTest\ShaderTest\obj\Debug\ShaderTest.pdb
+C:\Users\n3wd4\Desktop\New folder\Graphics\ShaderTest\ShaderTest\ShaderTest\bin\Debug\ShaderTest.exe.config
+C:\Users\n3wd4\Desktop\New folder\Graphics\ShaderTest\ShaderTest\ShaderTest\obj\Debug\ShaderTest.exe
+C:\Users\n3wd4\Desktop\New folder\Graphics\ShaderTest\ShaderTest\ShaderTest\obj\Debug\ShaderTest.pdb
+C:\Users\n3wd4\Desktop\New folder\Graphics\ShaderTest\ShaderTest\ShaderTest\bin\Debug\ShaderTest.exe
+C:\Users\n3wd4\Desktop\New folder\Graphics\ShaderTest\ShaderTest\ShaderTest\bin\Debug\ShaderTest.pdb
+C:\Users\n3wd4\Desktop\New folder\Graphics\ShaderTest\ShaderTest\ShaderTest\bin\Debug\OpenTK.dll
+C:\Users\n3wd4\Desktop\New folder\Graphics\ShaderTest\ShaderTest\ShaderTest\bin\Debug\OpenTK.GLControl.dll
+C:\Users\n3wd4\Desktop\New folder\Graphics\ShaderTest\ShaderTest\ShaderTest\bin\Debug\OpenTK.pdb
+C:\Users\n3wd4\Desktop\New folder\Graphics\ShaderTest\ShaderTest\ShaderTest\bin\Debug\OpenTK.xml
+C:\Users\n3wd4\Desktop\New folder\Graphics\ShaderTest\ShaderTest\ShaderTest\bin\Debug\OpenTK.GLControl.xml
+C:\Users\n3wd4\Desktop\New folder\Graphics\ShaderTest\ShaderTest\ShaderTest\obj\Debug\ShaderTest.csprojResolveAssemblyReference.cache
+C:\Users\n3wd4\Desktop\New folder\Graphics\ShaderTest\ShaderTest\ShaderTest\obj\Debug\ShaderTest.Form1.resources
+C:\Users\n3wd4\Desktop\New folder\Graphics\ShaderTest\ShaderTest\ShaderTest\obj\Debug\ShaderTest.Properties.Resources.resources
+C:\Users\n3wd4\Desktop\New folder\Graphics\ShaderTest\ShaderTest\ShaderTest\obj\Debug\ShaderTest.csproj.GenerateResource.Cache

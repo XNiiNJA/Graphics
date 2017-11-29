@@ -30,3 +30,19 @@ K:\Courses\CSSE\tianb\cs3920_cs5920\nie_obe\prog4_nie_obe\prog2_nie_obe\obj\Debu
 C:\Users\Grant\Academics\Fall\2017\Graphics\github\Graphics\prog4_nie_obe\prog2_nie_obe\bin\Debug\prog4_nie_obe.exe.config
 C:\Users\Grant\Academics\Fall\2017\Graphics\github\Graphics\prog4_nie_obe\prog2_nie_obe\obj\Debug\prog4_nie_obe.exe
 C:\Users\Grant\Academics\Fall\2017\Graphics\github\Graphics\prog4_nie_obe\prog2_nie_obe\obj\Debug\prog4_nie_obe.pdb
+C:\Users\n3wd4\Desktop\New folder\Graphics\prog4_nie_obe\prog2_nie_obe\bin\Debug\Prog4_FS.glsl
+C:\Users\n3wd4\Desktop\New folder\Graphics\prog4_nie_obe\prog2_nie_obe\bin\Debug\Prog4_VS.glsl
+C:\Users\n3wd4\Desktop\New folder\Graphics\prog4_nie_obe\prog2_nie_obe\bin\Debug\prog4_nie_obe.exe.config
+C:\Users\n3wd4\Desktop\New folder\Graphics\prog4_nie_obe\prog2_nie_obe\bin\Debug\prog4_nie_obe.exe
+C:\Users\n3wd4\Desktop\New folder\Graphics\prog4_nie_obe\prog2_nie_obe\bin\Debug\prog4_nie_obe.pdb
+C:\Users\n3wd4\Desktop\New folder\Graphics\prog4_nie_obe\prog2_nie_obe\bin\Debug\OpenTK.dll
+C:\Users\n3wd4\Desktop\New folder\Graphics\prog4_nie_obe\prog2_nie_obe\bin\Debug\OpenTK.GLControl.dll
+C:\Users\n3wd4\Desktop\New folder\Graphics\prog4_nie_obe\prog2_nie_obe\bin\Debug\OpenTK.pdb
+C:\Users\n3wd4\Desktop\New folder\Graphics\prog4_nie_obe\prog2_nie_obe\bin\Debug\OpenTK.xml
+C:\Users\n3wd4\Desktop\New folder\Graphics\prog4_nie_obe\prog2_nie_obe\bin\Debug\OpenTK.GLControl.xml
+C:\Users\n3wd4\Desktop\New folder\Graphics\prog4_nie_obe\prog2_nie_obe\obj\Debug\prog3_nie_obe.csprojResolveAssemblyReference.cache
+C:\Users\n3wd4\Desktop\New folder\Graphics\prog4_nie_obe\prog2_nie_obe\obj\Debug\prog3_nie_obe.Form1.resources
+C:\Users\n3wd4\Desktop\New folder\Graphics\prog4_nie_obe\prog2_nie_obe\obj\Debug\prog4_nie_obe.Properties.Resources.resources
+C:\Users\n3wd4\Desktop\New folder\Graphics\prog4_nie_obe\prog2_nie_obe\obj\Debug\prog3_nie_obe.csproj.GenerateResource.Cache
+C:\Users\n3wd4\Desktop\New folder\Graphics\prog4_nie_obe\prog2_nie_obe\obj\Debug\prog4_nie_obe.exe
+C:\Users\n3wd4\Desktop\New folder\Graphics\prog4_nie_obe\prog2_nie_obe\obj\Debug\prog4_nie_obe.pdb

@@ -108,17 +108,24 @@ namespace prog3_nie_obe
             //GL.MatrixMode(MatrixMode.Modelview);
             
             //Calculate the next model view matrix.
-            //Matrix4 ModelViewMatrix = displayMatrix * Matrix4.CreateTranslation(translateAmount) * lookat;
+            Matrix4 ModelViewMatrix = displayMatrix * Matrix4.CreateTranslation(translateAmount) * lookat;
 
+            //Create normal matrix which is inverse transpose of ModelView matrix
+            Matrix4 normalMatrix = ModelViewMatrix;
+            normalMatrix.Invert();
+            normalMatrix.Transpose();
 
-            int modelViewLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
+            int modelMatrixLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
                                                "ModelMatrix");
-            GL.UniformMatrix4(modelViewLocation, false, ref displayMatrix);
+            GL.UniformMatrix4(modelMatrixLocation, false, ref displayMatrix);
 
             int viewMatrixLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
                                    "ViewMatrix");
             GL.UniformMatrix4(viewMatrixLocation, false, ref lookat);
 
+            int shininessLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
+                                   "Shininess");
+            GL.Uniform1(ShaderLoader.Instance.ProgramHandle, Shininess);
 
             //Load model view matrix.
             //GL.LoadMatrix(ref ModelViewMatrix);
