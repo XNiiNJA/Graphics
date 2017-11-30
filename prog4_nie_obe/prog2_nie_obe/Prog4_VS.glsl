@@ -22,7 +22,7 @@
 	  position = (ViewMatrix * ModelMatrix) * vec4(VertexPosition,1.0);
 	}
 	
-	vec3 phongModel( vec4 position, vec3 norm )
+/*	vec3 phongModel( vec4 position, vec3 norm )
 	{
 	  vec3 s = normalize(vec3((ViewMatrix * vec4(LightPosition,1.0)) - position));
 	  vec3 v = normalize(-position.xyz);
@@ -35,6 +35,24 @@
 		  spec = LightColor * VertexColor *
 				 pow( max( dot(r,v), 0.0 ), Shininess);
 	  return ambient + diffuse + spec;
+	}*/
+	
+	vec3 phongModel( vec4 position, vec3 norm )
+	{
+
+		vec3 L = normalize(LightPosition - eyePosition);
+		vec3 E = -normalize(eyePosition.xyz);
+		vec3 R = reflect(L, norm);
+		vec3 H = normalize(L + E);
+		
+		vec4 diffuse = max(dot(L, N), 0.0) * VertexColor * LightColor;
+		
+		vec4 ambient = vec3(GlobalAmbient) * VertexColor;
+		
+		vec4 specular = pow(max(dot(norm, H), 0.0), Shininess) * VertexColor * LightColor; 
+	
+		return ambient + diffuse + spec;
+	
 	}
 	
 	void main()
@@ -48,7 +66,7 @@
 		//LightIntensity = vec3(0.0,1.0,1.0);
 		LightIntensity = phongModel(eyePosition, eyeNorm);
 		
-
+		gl_FrontColor = LightIntensity;
 
 		gl_Position = ProjectionMatrix * ViewMatrix * ModelMatrix * vec4(VertexPosition, 1.0);
 		//gl_Position = (ProjectionMatrix * ViewMatrix * ModelMatrix) * vec4(VertexPosition, 1.0);
