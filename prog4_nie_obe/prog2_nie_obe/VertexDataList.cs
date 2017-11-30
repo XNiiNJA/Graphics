@@ -136,9 +136,9 @@ public class VertexDataList
         for (int i = 0; i < vertList.Count; i += 3)
         {
 
-            Vector3 first = vertList[i].Position - vertList[i + 1].Position;
+            Vector3 first = vertList[i + 1].Position - vertList[i].Position;
 
-            Vector3 second = vertList[i].Position - vertList[i + 2].Position;
+            Vector3 second = vertList[i + 2].Position - vertList[i].Position;
 
             Vector3 normal = Vector3.Cross(first, second);
 

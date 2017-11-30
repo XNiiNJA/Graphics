@@ -114,12 +114,16 @@ namespace prog3_nie_obe
             GL.BindBuffer(BufferTarget.ArrayBuffer, vboHandle);
             GL.UseProgram(ShaderLoader.Instance.ProgramHandle);
             GL.BindVertexArray(vaoHandle);
-            
+
             //Set the matrix mode to modelview
             //GL.MatrixMode(MatrixMode.Modelview);
-            
+
+            Matrix4 ModelMatrix = displayMatrix * Matrix4.CreateTranslation(translateAmount);
+
             //Calculate the next model view matrix.
-            Matrix4 ModelViewMatrix = displayMatrix * Matrix4.CreateTranslation(translateAmount) * lookat;
+            Matrix4 ModelViewMatrix = displayMatrix * Matrix4.CreateTranslation(translateAmount);
+
+          
 
             //Create normal matrix which is inverse transpose of ModelView matrix
             Matrix4 normalMatrix = ModelViewMatrix;
@@ -133,7 +137,7 @@ namespace prog3_nie_obe
 
             int modelMatrixLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
                                                "ModelMatrix");
-            GL.UniformMatrix4(modelMatrixLocation, false, ref displayMatrix);
+            GL.UniformMatrix4(modelMatrixLocation, false, ref ModelMatrix);
 
 
 
