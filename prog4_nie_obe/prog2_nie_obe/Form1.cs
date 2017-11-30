@@ -41,7 +41,7 @@ namespace prog3_nie_obe
         private float camY = 0;
         private float camZ = 0;
 
-        Vector3 lightPos = new Vector3(0.0f, 0.0f, 0.0f);
+        Vector3 lightPos = new Vector3(5.0f, 5.0f, 5.0f);
 
         Vector3 lightColor = new Vector3(1.0f, 1.0f, 1.0f);
 
@@ -127,7 +127,7 @@ namespace prog3_nie_obe
          */ 
         private void glControl1_Load(object sender, EventArgs e)
         {
-            //GL.Enable(EnableCap.DepthTest);
+            GL.Enable(EnableCap.DepthTest);
 
             String vertShaderFileName = "Prog4_VS.glsl";
             String fragShaderFileName = "Prog4_FS.glsl";
@@ -263,6 +263,7 @@ namespace prog3_nie_obe
         private void resetBtn_Click(object sender, EventArgs e)
         {
             resetCamera();
+            resetLight();
             redrawWorld();
             figList.resetAll();
         }
@@ -410,6 +411,7 @@ namespace prog3_nie_obe
             {
                 Console.WriteLine(ex.Message);
             }
+            redrawWorld();
             
         }
 
@@ -439,11 +441,31 @@ namespace prog3_nie_obe
             lightColor.Z = (float)blue / (float)lightBlueBar.Maximum;
             
             groupBox2.BackColor = Color.FromArgb(red, green, blue);
+
+            redrawWorld();
         }
 
         private void globalAmbientNum_ValueChanged(object sender, EventArgs e)
         {
             globalAmbient = globalAmbientNum.Value;
+            redrawWorld();
+        }
+
+        private void resetLight()
+        {
+            lightXtxt.Text = "5";
+            lightYtxt.Text = "5";
+            lightZtxt.Text = "5";
+            lightRePos();
+
+            lightRedBar.Value = 255;
+            lightGrnBar.Value = 255;
+            lightBlueBar.Value = 255;
+            lightReColor();
+
+            globalAmbient = globalAmbientNum.Value = 1.0m;
+
+            redrawWorld();
         }
     }
 }

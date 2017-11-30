@@ -242,7 +242,6 @@
             // 
             // tmrMove
             // 
-            this.tmrMove.Enabled = true;
             this.tmrMove.Interval = 1;
             this.tmrMove.Tick += new System.EventHandler(this.tmrMove_Tick);
             // 
@@ -344,6 +343,7 @@
             this.lightXtxt.Name = "lightXtxt";
             this.lightXtxt.Size = new System.Drawing.Size(100, 20);
             this.lightXtxt.TabIndex = 7;
+            this.lightXtxt.Text = "5";
             this.lightXtxt.TextChanged += new System.EventHandler(this.lightXtxt_TextChanged);
             // 
             // lightBlueBar
@@ -356,6 +356,7 @@
             this.lightBlueBar.SmallChange = 5;
             this.lightBlueBar.TabIndex = 13;
             this.lightBlueBar.TickFrequency = 10;
+            this.lightBlueBar.Value = 255;
             this.lightBlueBar.Scroll += new System.EventHandler(this.lightBlueBar_Scroll);
             // 
             // lightYtxt
@@ -364,6 +365,7 @@
             this.lightYtxt.Name = "lightYtxt";
             this.lightYtxt.Size = new System.Drawing.Size(100, 20);
             this.lightYtxt.TabIndex = 7;
+            this.lightYtxt.Text = "5";
             this.lightYtxt.TextChanged += new System.EventHandler(this.lightYtxt_TextChanged);
             // 
             // lightZtxt
@@ -372,6 +374,7 @@
             this.lightZtxt.Name = "lightZtxt";
             this.lightZtxt.Size = new System.Drawing.Size(100, 20);
             this.lightZtxt.TabIndex = 8;
+            this.lightZtxt.Text = "5";
             this.lightZtxt.TextChanged += new System.EventHandler(this.lightZtxt_TextChanged);
             // 
             // lightGrnBar
@@ -384,6 +387,7 @@
             this.lightGrnBar.SmallChange = 5;
             this.lightGrnBar.TabIndex = 12;
             this.lightGrnBar.TickFrequency = 10;
+            this.lightGrnBar.Value = 255;
             this.lightGrnBar.Scroll += new System.EventHandler(this.lightGrnBar_Scroll);
             // 
             // label3
@@ -405,6 +409,7 @@
             this.lightRedBar.SmallChange = 5;
             this.lightRedBar.TabIndex = 11;
             this.lightRedBar.TickFrequency = 10;
+            this.lightRedBar.Value = 255;
             this.lightRedBar.Scroll += new System.EventHandler(this.lightRedBar_Scroll);
             // 
             // label4

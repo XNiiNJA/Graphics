@@ -26,8 +26,8 @@ namespace prog3_nie_obe
 
             //Random rand = new Random((int)DateTime.Now.Ticks);
 
-            int index = (int)(rand.NextDouble() * (double)MOVE_PATTERN_COUNT);
-
+            // int index = (int)(rand.NextDouble() * (double)MOVE_PATTERN_COUNT);
+            int index = 4;
             switch (index)
             {
 
@@ -57,7 +57,7 @@ namespace prog3_nie_obe
 
                 default:
 
-                    return new QuantumRealm();
+                    return new MovePatternStill();
 
                     break;
 
@@ -206,6 +206,14 @@ namespace prog3_nie_obe
             fig.Scale(new Vector3(0.99f, 0.99f, 0.99f));
         }
 
+    }
+
+    class MovePatternStill : MovePattern
+    {
+        public override void Move(Figure fig)
+        {
+            
+        }
     }
 
 

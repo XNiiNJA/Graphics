@@ -130,17 +130,18 @@ namespace prog3_nie_obe
             normalMatrix.Invert();
             normalMatrix.Transpose();
 
-
+            // What the f*** does this do???
             int normalMatrixLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
                                    "NormalMatrix");
             GL.UniformMatrix4(normalMatrixLocation, false, ref normalMatrix);
 
+
+            // What the f*** does this do???
             int modelMatrixLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
                                                "ModelMatrix");
             GL.UniformMatrix4(modelMatrixLocation, false, ref ModelMatrix);
 
-
-
+            // What the f*** does this do???
             int shininessLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
                                    "Shininess");
             GL.Uniform1(ShaderLoader.Instance.ProgramHandle, Shininess);
