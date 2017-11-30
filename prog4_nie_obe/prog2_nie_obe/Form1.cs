@@ -263,7 +263,6 @@ namespace prog3_nie_obe
         private void resetBtn_Click(object sender, EventArgs e)
         {
             resetCamera();
-            resetLight();
             redrawWorld();
             figList.resetAll();
         }
@@ -466,6 +465,11 @@ namespace prog3_nie_obe
             globalAmbient = globalAmbientNum.Value = 1.0m;
 
             redrawWorld();
+        }
+
+        private void lightResetBtn_Click(object sender, EventArgs e)
+        {
+            resetLight();
         }
     }
 }

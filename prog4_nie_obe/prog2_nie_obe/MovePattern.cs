@@ -24,10 +24,10 @@ namespace prog3_nie_obe
         public static MovePattern getRandom()
         {
 
-            //Random rand = new Random((int)DateTime.Now.Ticks);
+            Random rand = new Random((int)DateTime.Now.Ticks);
 
-            // int index = (int)(rand.NextDouble() * (double)MOVE_PATTERN_COUNT);
-            int index = 4;
+            int index = (int)(rand.NextDouble() * (double)MOVE_PATTERN_COUNT);
+            //int index = 4;
             switch (index)
             {
 

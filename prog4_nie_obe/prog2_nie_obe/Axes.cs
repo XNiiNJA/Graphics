@@ -89,13 +89,26 @@ public class Axes
         GL.UniformMatrix4(modelMatrixLocation, false, ref identity);
 
 
+        int ambientLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle, "GlobalAmbient");
 
+        float tempAmbient;
+
+        GL.GetUniform(ShaderLoader.Instance.ProgramHandle, ambientLocation, out tempAmbient);
+        
+        GL.Uniform1(ambientLocation, 1.0f);
+        
         int shininessLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
                                "Shininess");
-        GL.Uniform1(ShaderLoader.Instance.ProgramHandle, 0);
+        GL.Uniform1(shininessLocation, 0);
 
 
         GL.DrawArrays(PrimitiveType.Lines, 0, verts.Length);
+
+        //Putting ambient back
+        GL.Uniform1(ambientLocation, tempAmbient);
+
+
+
         GL.BindVertexArray(0);
         GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
         GL.UseProgram(0);

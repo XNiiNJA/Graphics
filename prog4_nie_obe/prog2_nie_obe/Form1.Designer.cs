@@ -62,6 +62,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.lightRedBar = new System.Windows.Forms.TrackBar();
             this.label4 = new System.Windows.Forms.Label();
+            this.lightResetBtn = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.trkTime)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.trkZ)).BeginInit();
@@ -247,6 +248,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.lightResetBtn);
             this.groupBox2.Controls.Add(this.label8);
             this.groupBox2.Controls.Add(this.globalAmbientNum);
             this.groupBox2.Controls.Add(this.label7);
@@ -421,6 +423,16 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Z -";
             // 
+            // lightResetBtn
+            // 
+            this.lightResetBtn.Location = new System.Drawing.Point(47, 334);
+            this.lightResetBtn.Name = "lightResetBtn";
+            this.lightResetBtn.Size = new System.Drawing.Size(75, 23);
+            this.lightResetBtn.TabIndex = 20;
+            this.lightResetBtn.Text = "Reset";
+            this.lightResetBtn.UseVisualStyleBackColor = true;
+            this.lightResetBtn.Click += new System.EventHandler(this.lightResetBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -492,6 +504,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button lightResetBtn;
     }
 }
 

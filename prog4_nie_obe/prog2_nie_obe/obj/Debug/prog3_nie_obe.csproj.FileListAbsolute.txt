@@ -74,3 +74,4 @@ C:\Users\n3wd4\Desktop\New folder\Graphics\prog4_nie_obe\prog2_nie_obe\obj\Debug
 C:\Users\n3wd4\Desktop\New folder\Graphics\prog4_nie_obe\prog2_nie_obe\obj\Debug\prog3_nie_obe.csproj.GenerateResource.Cache
 C:\Users\n3wd4\Desktop\New folder\Graphics\prog4_nie_obe\prog2_nie_obe\obj\Debug\prog4_nie_obe.exe
 C:\Users\n3wd4\Desktop\New folder\Graphics\prog4_nie_obe\prog2_nie_obe\obj\Debug\prog4_nie_obe.pdb
+C:\Users\n3wd4\Desktop\New folder\Graphics\prog4_nie_obe\prog2_nie_obe\obj\Debug\prog3_nie_obe.csprojResolveAssemblyReference.cache

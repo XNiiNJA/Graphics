@@ -107,6 +107,10 @@ namespace prog3_nie_obe
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
             GL.UseProgram(0);
 
+            Random rand = new Random((int)DateTime.Now.Ticks);
+
+            Shininess = (float)rand.NextDouble();
+            
         }
 
         public void Show(ref Matrix4 lookat)
@@ -121,7 +125,7 @@ namespace prog3_nie_obe
             Matrix4 ModelMatrix = displayMatrix * Matrix4.CreateTranslation(translateAmount);
 
             //Calculate the next model view matrix.
-            Matrix4 ModelViewMatrix = displayMatrix * Matrix4.CreateTranslation(translateAmount);
+            Matrix4 ModelViewMatrix = lookat * displayMatrix * Matrix4.CreateTranslation(translateAmount);
 
           
 
@@ -144,7 +148,7 @@ namespace prog3_nie_obe
             // What the f*** does this do???
             int shininessLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
                                    "Shininess");
-            GL.Uniform1(ShaderLoader.Instance.ProgramHandle, Shininess);
+            GL.Uniform1(shininessLocation, Shininess);
 
             //Load model view matrix.
             //GL.LoadMatrix(ref ModelViewMatrix);
