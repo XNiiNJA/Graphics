@@ -23,6 +23,45 @@ namespace prog3_nie_obe
         private List<FigureMovementPair> figlist =
             new List<FigureMovementPair>();
 
+        private List<FigureMovementPair> projectileList = new List<FigureMovementPair>();
+
+        private FigureMovementPair projectileTemplate = new FigureMovementPair();
+
+        public void AddProjectile()
+        {
+            Figure projectile = new Figure(projectileTemplate);
+
+            FigureMovementPair projMov = new FigureMovementPair();
+
+            projMov.fig = projectile;
+
+            projMov.movement = MovePattern.getProjectile();
+
+            projectileList.Add(projMov);
+        }
+
+        public void CheckCollisions()
+        {
+            /**
+             * It was a double-for loop that removed colliding objects if an object from one list collided with an object from the other list
+             *  (e.g, a projectile colliding with a piece of space debris).  I suggest that the outer loop goes backwards (know why!).  .... WHY???
+             *  Also am I doing this right?
+             */
+            List<FigureMovementPair> reverseList = figlist;
+            reverseList.Reverse();
+            
+
+            //foreach (FigureMovementPair fig in reverseList)
+            for (int i = figlist.Count; i > 0; i--)
+            {
+                foreach (FigureMovementPair pro in projectileList)
+                    if (figlist[i].fig.CollidesWith(pro.fig))
+                        //Kill Figure and projectile
+                        break;
+            }
+                
+        }
+
         /**
          * Loads all figures from the specified folder
          * @param folderName: the complete file path to the folder containing the figures
@@ -46,6 +85,10 @@ namespace prog3_nie_obe
                 figlist.Add(fmPair);
 
             }
+
+            // Might be dumb might not
+            projectileTemplate.fig.Load(/*file name*/);
+            projectileTemplate.movement = MovePattern.getProjectile();
             
         }
 

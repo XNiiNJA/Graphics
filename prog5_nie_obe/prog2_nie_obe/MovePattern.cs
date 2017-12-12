@@ -18,6 +18,11 @@ namespace prog3_nie_obe
         static public Random rand = new Random((int)DateTime.Now.Ticks);
       abstract public void Move(Figure fig);
 
+        public static MovePattern getProjectile()
+        {
+            return new MovePatternProjectile();
+        }
+
         /**
          * Returns a random movement pattern from a predetermined list of movement patterns
          */
@@ -57,7 +62,7 @@ namespace prog3_nie_obe
 
                 default:
 
-                    return new MovePatternStill();
+                    return new MovePatternProjectile();
 
                     break;
 
@@ -208,7 +213,7 @@ namespace prog3_nie_obe
 
     }
 
-    class MovePatternStill : MovePattern
+    class MovePatternProjectile : MovePattern
     {
         public override void Move(Figure fig)
         {

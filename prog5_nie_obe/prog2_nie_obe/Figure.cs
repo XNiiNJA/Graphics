@@ -27,8 +27,28 @@ namespace prog3_nie_obe
 
         private Vector3 max;
         private Vector3 min;
-        
+
         private VertexDataList vdl;
+
+        /// <summary>
+        /// Default Constructor
+        /// </summary>
+        public Figure()
+        {
+
+        }
+
+        /// <summary>
+        /// I added a "copy constructor" to Figure: public Figure(Figure f) that initialized all the data members using those from  f.
+        /// I used this so that I could add projectiles to the Projectile list when the Fire button is pressed without re-reading from a file.
+        /// </summary>
+        /// <param name="f">projectile figure</param>
+        public Figure(Figure f)
+        {
+            verts = f.verts;
+
+            // Stuffs and stuff
+        }
 
         public Vector3 CurrentCenter
         {
@@ -39,7 +59,7 @@ namespace prog3_nie_obe
         {
             name = new FileInfo(fileName).Name;
             name = name.Substring(0, name.IndexOf(".wrl"));
-            
+
             vdl = new VertexDataList();
 
             vdl.LoadDataFromVRML(fileName);
@@ -52,7 +72,7 @@ namespace prog3_nie_obe
             for (int i = 0; i < verts.Length; i++)
             {
                 Vector3 curVert = verts[i].Position;
-                
+
                 //Finding maximums
                 if (curVert.X > max.X)
                     max.X = curVert.X;
@@ -60,7 +80,7 @@ namespace prog3_nie_obe
                     max.Y = curVert.Y;
                 if (curVert.Z > max.Z)
                     max.Z = curVert.Z;
-                
+
                 //Finding minimums
                 if (curVert.X < min.X)
                     min.X = curVert.X;
@@ -70,15 +90,15 @@ namespace prog3_nie_obe
                     min.Z = curVert.Z;
 
             }
-            
+
             //Calculate fixed point
             fixedPoint = new Vector3(
-                (max.X + min.X)/2, 
-                (max.Y + min.Y)/2,
-                (max.Z + min.Z)/2);
+                (max.X + min.X) / 2,
+                (max.Y + min.Y) / 2,
+                (max.Z + min.Z) / 2);
 
             loadInitTranslation();
-            
+
 
             GL.GenBuffers(1, out vboHandle);
             GL.BindBuffer(BufferTarget.ArrayBuffer, vboHandle);
@@ -113,7 +133,7 @@ namespace prog3_nie_obe
             Random rand = new Random((int)DateTime.Now.Ticks);
 
             Shininess = (float)rand.NextDouble();
-            
+
         }
 
         public void Show(ref Matrix4 lookat)
@@ -130,7 +150,7 @@ namespace prog3_nie_obe
             //Calculate the next model view matrix.
             Matrix4 ModelViewMatrix = lookat * displayMatrix * Matrix4.CreateTranslation(translateAmount);
 
-          
+
 
             //Create normal matrix which is inverse transpose of ModelView matrix
             Matrix4 normalMatrix = ModelViewMatrix;
@@ -161,7 +181,7 @@ namespace prog3_nie_obe
             GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
             GL.UseProgram(0);
         }
-        
+
         public float Shininess { get; set; }
 
         public void loadInitTranslation()
@@ -181,7 +201,7 @@ namespace prog3_nie_obe
         {
             //Translate by changing the position
             translateAmount += translation;
-            
+
         }
 
 
@@ -192,9 +212,9 @@ namespace prog3_nie_obe
 
             //Translate the object back to the center.
             Matrix4 transMatrix = Matrix4.CreateTranslation(-translateAmount);
-            
+
             Matrix4 transBackMatrix = Matrix4.CreateTranslation(translateAmount);
-            
+
             Matrix4 final = Matrix4.Mult(transBackMatrix, Matrix4.Mult(rotMatrix, transMatrix));
 
             displayMatrix = Matrix4.Mult(final, displayMatrix);
@@ -202,13 +222,13 @@ namespace prog3_nie_obe
             forward = Vector3.TransformNormal(forward, final);
 
         }
-        
+
         //Translate on the local X axis of the figure.
         public void RotateLocalX(Single angle)
         {
 
             Matrix4 rotMatrix = Matrix4.CreateRotationX(angle);
-            
+
             displayMatrix = Matrix4.Mult(displayMatrix, rotMatrix);
 
             forward = Vector3.TransformNormal(forward, rotMatrix);
@@ -281,7 +301,7 @@ namespace prog3_nie_obe
         //Do a rotation along a user-defined axis.
         public void Rotate(Vector3 axis, Single angle)
         {
-            
+
             Matrix4 rotation = Matrix4.CreateFromAxisAngle(axis, angle);
 
             displayMatrix = Matrix4.Mult(rotation, displayMatrix);
@@ -300,6 +320,25 @@ namespace prog3_nie_obe
             forward = Vector3.TransformNormal(forward, scaleMatrix);
 
         }
+
+        public bool CollidesWith(Vector3 OtherObjectMax, Vector3 OtherObjectMin, Vector3 OtherObjectPosition)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                if ((max[i] + translateAmount[i]) <
+                    (OtherObjectMin[i] + OtherObjectPosition[i]) ||
+                    (OtherObjectMax[i] + OtherObjectPosition[i]) <
+                    (min[i] + translateAmount[i]))
+                    return false;
+            }
+            return true;
+        }
+
+        public bool CollidesWith(Figure f)
+        {
+            return CollidesWith(f.max, f.min, f.translateAmount);
+        }
+
 
     }
 }
