@@ -217,7 +217,7 @@ namespace prog3_nie_obe
     {
         public override void Move(Figure fig)
         {
-            
+            fig.Translate(fig.forward);
         }
     }
 

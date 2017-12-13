@@ -27,12 +27,13 @@ namespace prog3_nie_obe
         private const int DEFAULT_CAM_Y = 5;
         private const int DEFAULT_CAM_Z = 5;
 
-        private int forwardKey = 87;
-        private int leftKey = 65;
-        private int backKey = 83;
-        private int rightKey = 68;
-        private int upKey = 16;
-        private int downKey = 17;
+        private const int FORWARD_KEY = 87;
+        private const int LEFT_KEY = 65;
+        private const int BACK_KEY = 83;
+        private const int RIGHT_KEY = 68;
+        private const int UP_KEY = 16;
+        private const int DOWN_KEY = 17;
+        private const int SPACE_KEY = 32;
 
         private bool forwardDown = false;
         private bool backwardDown = false;
@@ -42,6 +43,8 @@ namespace prog3_nie_obe
 
         private bool upDown = false;
         private bool downDown = false;
+
+        private bool spaceDown = false;
 
         private Decimal globalAmbient;
 
@@ -231,8 +234,9 @@ namespace prog3_nie_obe
             
             FolderBrowserDialog file = new FolderBrowserDialog();
 
-         //file.RootFolder = System.Environment.SpecialFolder.MyComputer;
-         file.SelectedPath = "K:\\Courses\\CSSE\\tianb\\cs3920_cs5920\\nie_obe";
+            //file.RootFolder = System.Environment.SpecialFolder.MyComputer;
+            //file.SelectedPath = "K:\\Courses\\CSSE\\tianb\\cs3920_cs5920\\nie_obe";
+            file.SelectedPath = "C:\\Users\\n3wd4\\Documents\\Visual Studio 2015\\Projects\\Graphics\\Graphics\\prog5_nie_obe";
             if (file.ShowDialog() == DialogResult.OK)
             {
                 String path = file.SelectedPath;
@@ -334,6 +338,8 @@ namespace prog3_nie_obe
                 Ship.Instance.Move(1);
             if (downDown)
                 Ship.Instance.Move(-1);
+            if (spaceDown)
+                figList.AddProjectile(Ship.Instance.Direction);
 
             figList.moveAll();
             
@@ -510,58 +516,66 @@ namespace prog3_nie_obe
         private void glControl1_KeyUp(object sender, KeyEventArgs e)
         {
 
-            if (this.forwardKey == e.KeyValue)
+            if (FORWARD_KEY == e.KeyValue)
             {
                 forwardDown = false;
             }
-            else if (this.leftKey == e.KeyValue)
+            else if (LEFT_KEY == e.KeyValue)
             {
                 leftDown = false;
             }
-            else if (this.rightKey == e.KeyValue)
+            else if (RIGHT_KEY == e.KeyValue)
             {
                 rightDown = false;
             }
-            else if (this.backKey == e.KeyValue)
+            else if (BACK_KEY == e.KeyValue)
             {
                 backwardDown = false;
             }
-            else if (this.upKey == e.KeyValue)
+            else if (UP_KEY == e.KeyValue)
             {
                 upDown = false;
             }
-            else if (this.downKey == e.KeyValue)
+            else if (DOWN_KEY == e.KeyValue)
             {
                 downDown = false;
+            }
+            else if (SPACE_KEY == e.KeyValue)
+            {
+                spaceDown = false;
             }
 
         }
 
         private void glControl1_KeyDown(object sender, KeyEventArgs e)
         {
-            if (this.forwardKey == e.KeyValue)
+            if (FORWARD_KEY == e.KeyValue)
             {
                 forwardDown = true;
             }
-            else if (this.leftKey == e.KeyValue)
+            else if (LEFT_KEY == e.KeyValue)
             {
                 leftDown = true;
             }
-            else if (this.rightKey == e.KeyValue)
+            else if (RIGHT_KEY == e.KeyValue)
             {
                 rightDown = true;
             }
-            else if (this.backKey == e.KeyValue)
+            else if (BACK_KEY == e.KeyValue)
             {
                 backwardDown = true;
             }
-            else if (this.upKey == e.KeyValue)
+            else if (UP_KEY == e.KeyValue)
             {
                 upDown = true;
             }
-            else if (this.downKey == e.KeyValue)
+            else if (DOWN_KEY == e.KeyValue)
             {
                 downDown = true;
+            }
+            else if (SPACE_KEY == e.KeyValue)
+            {
+                spaceDown = true;
             }
         }
     }

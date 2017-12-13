@@ -27,17 +27,16 @@ namespace prog3_nie_obe
 
         private FigureMovementPair projectileTemplate = new FigureMovementPair();
 
-        public void AddProjectile()
+        public void AddProjectile(Vector3 frwd)
         {
-            Figure projectile = new Figure(projectileTemplate);
+            FigureMovementPair projectileCopy = new FigureMovementPair();
 
-            FigureMovementPair projMov = new FigureMovementPair();
+            projectileCopy.fig = new Figure(projectileTemplate.fig);
+            projectileCopy.movement = projectileTemplate.movement;
 
-            projMov.fig = projectile;
+            projectileCopy.fig.forward = frwd;
 
-            projMov.movement = MovePattern.getProjectile();
-
-            projectileList.Add(projMov);
+            projectileList.Add(projectileCopy);
         }
 
         public void CheckCollisions()
@@ -49,23 +48,26 @@ namespace prog3_nie_obe
              */
             List<FigureMovementPair> reverseList = figlist;
             reverseList.Reverse();
-            
+
 
             //foreach (FigureMovementPair fig in reverseList)
             for (int i = figlist.Count; i > 0; i--)
             {
                 foreach (FigureMovementPair pro in projectileList)
                     if (figlist[i].fig.CollidesWith(pro.fig))
-                        //Kill Figure and projectile
+                    {
+                        figlist.Remove(figlist[i]);
+                        projectileList.Remove(pro);
                         break;
+                    }
             }
-                
+
         }
 
-        /**
-         * Loads all figures from the specified folder
-         * @param folderName: the complete file path to the folder containing the figures
-         */
+        /// <summary>
+        /// Loads all figures from the specified folder
+        /// </summary>
+        /// <param name="folderName">the complete file path to the folder containing the figures</param>
         public void LoadFigures(string folderName)
         {
 
@@ -86,10 +88,13 @@ namespace prog3_nie_obe
 
             }
 
-            // Might be dumb might not
-            projectileTemplate.fig.Load(/*file name*/);
+            // probably dumb might not
+            string projectileFile = 
+                "C:\\Users\\n3wd4\\Documents\\Visual Studio 2015\\Projects\\Graphics\\Graphics\\prog5_nie_obe\\sphear.wrl";
+            projectileTemplate.fig = new Figure();
+            projectileTemplate.fig.Load(projectileFile);
             projectileTemplate.movement = MovePattern.getProjectile();
-            
+
         }
 
         /**
@@ -108,12 +113,12 @@ namespace prog3_nie_obe
          */
         public void drawAll(ref Matrix4 lookat)
         {
-            
+
             Axes.Instance.Show();
 
             foreach (var fmPair in figlist)
                 fmPair.fig.Show(ref lookat);
-            
+
         }
 
         /**

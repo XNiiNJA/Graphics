@@ -23,7 +23,7 @@ namespace prog3_nie_obe
         private Vector3 translateAmount;
 
         //A normalized vector pointing in the forward direction of the figure.
-        private Vector3 forward;
+        public Vector3 forward { get; set; }
 
         private Vector3 max;
         private Vector3 min;
@@ -46,7 +46,19 @@ namespace prog3_nie_obe
         public Figure(Figure f)
         {
             verts = f.verts;
+            vboHandle = f.vboHandle;
+            vaoHandle = f.vaoHandle;
 
+            displayMatrix = f.displayMatrix;
+            fixedPoint = f.fixedPoint;
+            translateAmount = f.translateAmount;
+
+            forward = f.forward;
+
+            max = f.max;
+            min = f.min;
+
+            vdl = f.vdl;
             // Stuffs and stuff
         }
 
@@ -148,27 +160,27 @@ namespace prog3_nie_obe
             Matrix4 ModelMatrix = displayMatrix * Matrix4.CreateTranslation(translateAmount);
 
             //Calculate the next model view matrix.
-            Matrix4 ModelViewMatrix = lookat * displayMatrix * Matrix4.CreateTranslation(translateAmount);
+            Matrix4 ModelViewMatrix = displayMatrix * Matrix4.CreateTranslation(translateAmount) * lookat;
 
 
 
             //Create normal matrix which is inverse transpose of ModelView matrix
             Matrix4 normalMatrix = ModelViewMatrix;
-            normalMatrix.Invert();
             normalMatrix.Transpose();
+            normalMatrix.Invert();
 
-            // What the f*** does this do???
+            
             int normalMatrixLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
                                    "NormalMatrix");
             GL.UniformMatrix4(normalMatrixLocation, false, ref normalMatrix);
 
 
-            // What the f*** does this do???
+            
             int modelMatrixLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
                                                "ModelMatrix");
             GL.UniformMatrix4(modelMatrixLocation, false, ref ModelMatrix);
 
-            // What the f*** does this do???
+            
             int shininessLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle,
                                    "Shininess");
             GL.Uniform1(shininessLocation, Shininess);
