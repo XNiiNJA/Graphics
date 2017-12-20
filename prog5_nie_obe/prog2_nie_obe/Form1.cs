@@ -37,6 +37,8 @@ namespace prog3_nie_obe
 
         private const int INIT_TIME = 60;
 
+        private const int NUM_JUNK = 20;
+
         private static int score = 0;
 
         private static int gameTime = INIT_TIME;
@@ -234,12 +236,15 @@ namespace prog3_nie_obe
             lblPos.Text = "Position: " + Ship.Instance.Position.ToString();
             lblDir.Text = "Direction: " + Ship.Instance.Direction.ToString();
 
-            figList.LoadFigures(".\\..\\..\\..\\", 10);
+            figList.LoadFigures(".\\..\\..\\..\\", NUM_JUNK);
 
             tmrGame.Start();
             tmrMove.Start();
         }
 
+        /// <summary>
+        /// Resets all the button down flags to false
+        /// </summary>
         private void resetButtonFlags()
         {
             forwardDown = false;
