@@ -46,9 +46,9 @@
 		float sDotN = max( dot(s,norm), 0.0 );
 		vec3 diffuse = LightColor * VertexColor * sDotN * spotEffect;
 		vec3 spec = vec3(0.0);
-		if( sDotN > 0.0 )
+		if (sDotN > 0.0)
 			spec = LightColor * VertexColor *
-					pow( max( dot(r,v), 0.0 ), Shininess) * spotEffect;
+			pow(max(dot(r, v), 0.0), Shininess) * spotEffect;
 
 		return ambient + diffuse + spec;
 	}

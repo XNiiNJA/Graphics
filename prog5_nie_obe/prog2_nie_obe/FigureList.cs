@@ -12,6 +12,9 @@ namespace prog3_nie_obe
      */
     class FigureList
     {
+
+        private const int POS_RANGE = 10;
+
         /**
          * Struct for one figure paired with one movment pattern
          */
@@ -77,45 +80,37 @@ namespace prog3_nie_obe
 
             string[] files = Directory.GetFiles(folderName, "*.wrl");
 
-            foreach (string file in files)
-            {
-
-                FigureMovementPair fmPair = new FigureMovementPair();
-
-                fmPair.fig = new Figure();
-
-                fmPair.fig.Load(file);
-
-                fmPair.movement = MovePattern.getRandom();
-
-                figlist.Add(fmPair);
-
-            }
-
             Random rand = new Random((int)DateTime.Now.Ticks);
 
-            
-            //Ensure there are at least 'num' figures by copying.
-
-            for (int i = figlist.Count; i < num; i++)
+            while (figlist.Count < num)
             {
+                foreach (string file in files)
+                {
 
-                int index = (int)(rand.NextDouble() * (double)figlist.Count);
+                    FigureMovementPair fmPair = new FigureMovementPair();
 
-                Figure fig = new Figure(figlist[index].fig);
+                    fmPair.fig = new Figure();
 
-                FigureMovementPair newPair = new FigureMovementPair();
+                    fmPair.fig.Load(file);
 
-                newPair.fig = fig;
+                    fmPair.movement = MovePattern.getRandom();
 
-                newPair.movement = MovePattern.getRandom();
-                
-                figlist.Add(newPair);
-                
+                    float xnew = (float)(rand.NextDouble() * (double)POS_RANGE * 2) - POS_RANGE;
+
+                    float ynew = (float)(rand.NextDouble() * (double)POS_RANGE * 2) - POS_RANGE;
+
+                    float znew = (float)(rand.NextDouble() * (double)POS_RANGE * 2) - POS_RANGE;
+
+                    fmPair.fig.Translate(new Vector3(xnew, ynew, znew));
+                    
+                    figlist.Add(fmPair);
+                        
+
+
+                }
+
             }
-
             
-
             // probably dumb might not
 
             //It is, but we'll keep it for now.

@@ -59,6 +59,11 @@ namespace prog3_nie_obe
             min = f.min;
 
             vdl = f.vdl;
+
+            min = f.min;
+
+            max = f.max;
+
             // Stuffs and stuff
         }
 
@@ -144,7 +149,7 @@ namespace prog3_nie_obe
 
             Random rand = new Random((int)DateTime.Now.Ticks);
 
-            Shininess = (float)rand.NextDouble();
+            Shininess = 1.0f; //(float)rand.NextDouble();
 
         }
 

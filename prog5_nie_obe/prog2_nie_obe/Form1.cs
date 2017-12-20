@@ -140,7 +140,7 @@ namespace prog3_nie_obe
             GL.Uniform3(lgtSpotDirection, Ship.Instance.Direction);
 
             int lgtSpotAngle = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle, "spotCutOffAngle");
-            GL.Uniform1(lgtSpotAngle, (float)60);
+            GL.Uniform1(lgtSpotAngle, (float)30);
 
             int lgtSpotExponent = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle, "spotExponent");
             GL.Uniform1(lgtSpotExponent, (float)5);
@@ -171,7 +171,7 @@ namespace prog3_nie_obe
             if (!ShaderLoader.Instance.Load(vertShaderFileName, fragShaderFileName))
                 MessageBox.Show(ShaderLoader.Instance.LastLoadError);
 
-            globalAmbient = (Decimal)0.0;
+            globalAmbient = (Decimal)0.1;
 
             figList = new FigureList();
 
@@ -308,8 +308,14 @@ namespace prog3_nie_obe
             lblPos.Text = "Position: " + Ship.Instance.Position.ToString();
             lblDir.Text = "Direction: " + Ship.Instance.Direction.ToString();
 
-
-
+            if (figList.Count() == 0 && tmrGame.Enabled)
+            {
+                tmrGame.Stop();
+                tmrMove.Stop();
+                //game over
+                MessageBox.Show("You WIN!!!!!");
+            }
+            
             redrawWorld();
 
         }

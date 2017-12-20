@@ -70,11 +70,18 @@ namespace prog4_nie_obe
         // Main form can call this to get the View Matrix
         public Matrix4 LookAt()
         {
-            return Matrix4.LookAt(position[0], position[1], position[2],
+            /*return Matrix4.LookAt(position[0], position[1], position[2],
                (float)(position[0] + Math.Sin(dirPhi) * Math.Sin(dirTheta)),
                (float)(position[1] + Math.Cos(dirPhi)),
                (float)(position[2] + Math.Sin(dirPhi) * Math.Cos(dirTheta)),
+               0, 1, 0);*/
+
+            return Matrix4.LookAt(position[0], position[1], position[2],
+               (float)(position[0] + direction[0]),
+               (float)(position[1] + direction[1]),
+               (float)(position[2] + direction[2]),
                0, 1, 0);
+
         }
 
         // etc. Add whatever you need
