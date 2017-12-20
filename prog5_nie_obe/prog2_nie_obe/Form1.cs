@@ -35,7 +35,7 @@ namespace prog3_nie_obe
         private const int DOWN_KEY = 17;
         private const int SPACE_KEY = 32;
 
-        private const int INIT_TIME = 480;
+        private const int INIT_TIME = 5;
 
         private static int score = 0;
 
@@ -219,7 +219,7 @@ namespace prog3_nie_obe
             redrawWorld();
 
             score = 0;
-
+            
             gameTime = INIT_TIME;
 
             targLbl.Text = "Targets Remaining: " + figList.Count();
