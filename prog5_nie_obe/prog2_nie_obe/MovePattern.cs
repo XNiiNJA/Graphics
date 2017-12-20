@@ -14,7 +14,7 @@ namespace prog3_nie_obe
      */
     abstract class MovePattern
     {
-        public const int MOVE_PATTERN_COUNT = 4;
+        public const int MOVE_PATTERN_COUNT = 2;
         static public Random rand = new Random((int)DateTime.Now.Ticks);
       abstract public void Move(Figure fig);
 
@@ -37,7 +37,7 @@ namespace prog3_nie_obe
             switch (index)
             {
 
-                case 0:
+/*                case 0:
 
                     return new QuantumRealm();
 
@@ -47,23 +47,23 @@ namespace prog3_nie_obe
 
                     return new MovePatternTwist();
 
-                    break;
+                    break;*/
 
-                case 2:
+                case 0:
 
                     return new MovePatternSin();
 
                     break;
 
-                case 3:
+                case 1:
 
-                    return new MovePatternMore();
+                    return new QuantumRealm();
 
                     break;
 
                 default:
 
-                    return new MovePatternProjectile();
+                    return new MovePatternMore();
 
                     break;
 

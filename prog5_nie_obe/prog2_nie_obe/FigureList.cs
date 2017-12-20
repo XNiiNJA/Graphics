@@ -174,6 +174,24 @@ namespace prog3_nie_obe
             //    projectileList.Remove(fmPair);
 
         }
+
+        /**
+         * resets all figures to their starting positions
+        */
+        public void removeAll()
+        {
+
+            figlist.RemoveAll(AllPairs);
+
+            projectileList.RemoveAll(AllPairs);
+
+
+            //foreach (var fmPair in projectileList)
+            //    projectileList.Remove(fmPair);
+
+        }
+
+
         private static bool AllPairs(FigureMovementPair pair)
         {
             return true;

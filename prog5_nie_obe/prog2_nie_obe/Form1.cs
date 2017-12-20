@@ -35,7 +35,7 @@ namespace prog3_nie_obe
         private const int DOWN_KEY = 17;
         private const int SPACE_KEY = 32;
 
-        private const int INIT_TIME = 5;
+        private const int INIT_TIME = 60;
 
         private static int score = 0;
 
@@ -77,7 +77,7 @@ namespace prog3_nie_obe
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            figList.LoadFigures(".\\..\\..\\..\\", 10);
+
 
         }
 
@@ -215,6 +215,9 @@ namespace prog3_nie_obe
         private void resetBtn_Click(object sender, EventArgs e)
         {
             Ship.Instance.Reset();
+
+            figList.removeAll();
+
             figList.resetAll();
             redrawWorld();
 
@@ -230,6 +233,8 @@ namespace prog3_nie_obe
 
             lblPos.Text = "Position: " + Ship.Instance.Position.ToString();
             lblDir.Text = "Direction: " + Ship.Instance.Direction.ToString();
+
+            figList.LoadFigures(".\\..\\..\\..\\", 10);
 
             tmrGame.Start();
             tmrMove.Start();
@@ -401,7 +406,7 @@ namespace prog3_nie_obe
                             "Shift: Move Forward\n" +
                             "Ctrl: Move Backwards\n" +
                             "Space: Shoot!\n\n" +
-                            "Shoot all of the asteroids before time runs out!");
+                            "Shoot all of the space junk before time runs out!");
 
         }
     }
