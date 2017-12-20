@@ -322,6 +322,24 @@ namespace prog3_nie_obe
 
         }
 
+        public void OrbitPoint(Vector3 axis, Vector3 point, Single angle)
+        {
+            
+            //Translate the object back to the center.
+            Matrix4 transMatrix = Matrix4.CreateTranslation(-point);
+
+            Matrix4 transBackMatrix = Matrix4.CreateTranslation(point);
+
+            Matrix4 rotation = Matrix4.CreateFromAxisAngle(axis, angle);
+            
+            Matrix4 final = Matrix4.Mult(Matrix4.Mult(transBackMatrix, rotation), transMatrix);
+            
+            displayMatrix = Matrix4.Mult(final, displayMatrix);
+
+            forward = Vector3.TransformNormal(forward, final);
+            
+        }
+
         //Scale the object with a vector.
         public void Scale(Vector3 scaler)
         {
