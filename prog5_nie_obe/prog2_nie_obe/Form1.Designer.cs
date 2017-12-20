@@ -38,6 +38,8 @@
             this.targLbl = new System.Windows.Forms.Label();
             this.timeLbl = new System.Windows.Forms.Label();
             this.tmrMove = new System.Windows.Forms.Timer(this.components);
+            this.tmrGame = new System.Windows.Forms.Timer(this.components);
+            this.resetBtn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -121,11 +123,29 @@
             this.tmrMove.Interval = 16;
             this.tmrMove.Tick += new System.EventHandler(this.tmrMove_Tick);
             // 
+            // tmrGame
+            // 
+            this.tmrGame.Interval = 1000;
+            this.tmrGame.Tick += new System.EventHandler(this.tmrGame_Tick);
+            // 
+            // resetBtn
+            // 
+            this.resetBtn.BackColor = System.Drawing.Color.Lime;
+            this.resetBtn.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.resetBtn.Location = new System.Drawing.Point(738, 43);
+            this.resetBtn.Name = "resetBtn";
+            this.resetBtn.Size = new System.Drawing.Size(75, 23);
+            this.resetBtn.TabIndex = 10;
+            this.resetBtn.Text = "New Game";
+            this.resetBtn.UseVisualStyleBackColor = false;
+            this.resetBtn.Click += new System.EventHandler(this.resetBtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(825, 629);
+            this.Controls.Add(this.resetBtn);
             this.Controls.Add(this.timeLbl);
             this.Controls.Add(this.targLbl);
             this.Controls.Add(this.scoreLbl);
@@ -156,6 +176,8 @@
         private System.Windows.Forms.Label targLbl;
         private System.Windows.Forms.Label timeLbl;
         private System.Windows.Forms.Timer tmrMove;
+        private System.Windows.Forms.Timer tmrGame;
+        private System.Windows.Forms.Button resetBtn;
     }
 }
 

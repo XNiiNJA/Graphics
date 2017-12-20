@@ -35,7 +35,11 @@ namespace prog3_nie_obe
         private const int DOWN_KEY = 17;
         private const int SPACE_KEY = 32;
 
+        private const int INIT_TIME = 480;
+
         private static int score = 0;
+
+        private static int gameTime = INIT_TIME;
 
         private bool forwardDown = false;
         private bool backwardDown = false;
@@ -209,8 +213,18 @@ namespace prog3_nie_obe
         private void resetBtn_Click(object sender, EventArgs e)
         {
             Ship.Instance.Reset();
-            redrawWorld();
             figList.resetAll();
+            redrawWorld();
+
+            score = 0;
+
+            gameTime = INIT_TIME;
+
+            targLbl.Text = "Targets Remaining: " + figList.Count();
+            scoreLbl.Text = "Score: " + score;
+            timeLbl.Text = "Time Remaining: " + gameTime;
+
+            tmrGame.Start();
         }
 
         /**
@@ -332,6 +346,18 @@ namespace prog3_nie_obe
             {
                 spaceDown = true;
             }
+        }
+
+        private void tmrGame_Tick(object sender, EventArgs e)
+        {
+            if (gameTime <= 0)
+            {
+                tmrGame.Stop();
+                //game over
+            }
+            gameTime--;
+
+            timeLbl.Text = "Time Remaining: " + gameTime;
         }
     }
 }
