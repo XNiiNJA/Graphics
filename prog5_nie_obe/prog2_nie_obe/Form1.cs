@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 using OpenTK;
 using OpenTK.Graphics.OpenGL4;
- using prog4_nie_obe;
+using prog4_nie_obe;
 
 namespace prog3_nie_obe
 {
@@ -22,7 +22,7 @@ namespace prog3_nie_obe
         }
 
         private FigureList figList;
-        
+
         private const int DEFAULT_CAM_X = 5;
         private const int DEFAULT_CAM_Y = 5;
         private const int DEFAULT_CAM_Z = 5;
@@ -35,7 +35,7 @@ namespace prog3_nie_obe
         private const int DOWN_KEY = 17;
         private const int SPACE_KEY = 32;
 
-        private const int INIT_TIME = 60;
+        private const int INIT_TIME = 5;
 
         private static int score = 0;
 
@@ -58,11 +58,11 @@ namespace prog3_nie_obe
          * Set current rendering mode
          */
         private bool isOrtho = false;
-        
+
 
         /*
          * Current camera position variables. 
-         */ 
+         */
         private float camX = -5;
         private float camY = 0;
         private float camZ = 0;
@@ -78,7 +78,7 @@ namespace prog3_nie_obe
         {
 
             figList.LoadFigures(".\\..\\..\\..\\", 10);
-            
+
         }
 
         /**
@@ -86,15 +86,15 @@ namespace prog3_nie_obe
          */
         private void redrawWorld()
         {
-            
+
             Matrix4 projMat = Matrix4.Zero;
             Matrix4 lookat = Matrix4.Zero;
-            
+
 
             GL.ClearColor(0.0f, 0.0f, 0.0f, 0.0f);
 
             GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-            
+
 
             //GL.MatrixMode(MatrixMode.Projection);
 
@@ -103,7 +103,7 @@ namespace prog3_nie_obe
                 projMat = Matrix4.CreateOrthographic(10.0f, 10.0f, 0.0f, 100.0f);
             }
             else
-            {                
+            {
                 projMat = Matrix4.CreatePerspectiveOffCenter(
                     -2.0f, 2.0f, -2.0f, 2.0f, 2.0f, 500.0f);
             }
@@ -115,7 +115,7 @@ namespace prog3_nie_obe
             GL.UniformMatrix4(projMatrixLocation, false, ref projMat);
 
             lookat = Ship.Instance.LookAt();
-                //Matrix4.LookAt(camX, camY, camZ, 0, 0, 0, 0, 1, 0);
+            //Matrix4.LookAt(camX, camY, camZ, 0, 0, 0, 0, 1, 0);
 
 
             int lookatMatLoc = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle, "ViewMatrix");
@@ -148,17 +148,17 @@ namespace prog3_nie_obe
             //GL.MatrixMode(MatrixMode.Modelview);
 
             //GL.LoadMatrix(ref lookat);
-            
+
             figList.drawAll(ref lookat);
 
             glControl1.SwapBuffers();
 
         }
-        
+
         /**
          * glControl load event.
          * Sets the 
-         */ 
+         */
         private void glControl1_Load(object sender, EventArgs e)
         {
             GL.Enable(EnableCap.DepthTest);
@@ -175,7 +175,7 @@ namespace prog3_nie_obe
 
             redrawWorld();
         }
-        
+
         /**
          * Exit button in the file menu. Closes the form. 
          */
@@ -189,7 +189,7 @@ namespace prog3_nie_obe
          */
         private void loadToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             FolderBrowserDialog file = new FolderBrowserDialog();
 
             //file.RootFolder = System.Environment.SpecialFolder.MyComputer;
@@ -218,8 +218,10 @@ namespace prog3_nie_obe
             figList.resetAll();
             redrawWorld();
 
+            resetButtonFlags();
+
             score = 0;
-            
+
             gameTime = INIT_TIME;
 
             targLbl.Text = "Targets Remaining: " + figList.Count();
@@ -231,6 +233,20 @@ namespace prog3_nie_obe
 
             tmrGame.Start();
             tmrMove.Start();
+        }
+
+        private void resetButtonFlags()
+        {
+            forwardDown = false;
+            backwardDown = false;
+
+            leftDown = false;
+            rightDown = false;
+
+            upDown = false;
+            downDown = false;
+
+            spaceDown = false;
         }
 
         /**
@@ -371,6 +387,7 @@ namespace prog3_nie_obe
                 tmrGame.Stop();
                 tmrMove.Stop();
                 //game over
+                MessageBox.Show("Game Over");
             }
         }
 
