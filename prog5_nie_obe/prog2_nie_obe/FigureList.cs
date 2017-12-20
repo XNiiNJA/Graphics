@@ -27,7 +27,7 @@ namespace prog3_nie_obe
 
         private FigureMovementPair projectileTemplate = new FigureMovementPair();
 
-        public void AddProjectile(Vector3 frwd)
+        public void AddProjectile(Vector3 frwd, Vector3 position)
         {
             FigureMovementPair projectileCopy = new FigureMovementPair();
 
@@ -35,7 +35,8 @@ namespace prog3_nie_obe
             projectileCopy.movement = projectileTemplate.movement;
 
             projectileCopy.fig.forward = frwd;
-
+            projectileCopy.fig.Translate(position);
+            
             projectileList.Add(projectileCopy);
         }
 
@@ -51,7 +52,7 @@ namespace prog3_nie_obe
 
 
             //foreach (FigureMovementPair fig in reverseList)
-            for (int i = figlist.Count; i > 0; i--)
+            for (int i = figlist.Count - 1; i > 0; i--)
             {
                 foreach (FigureMovementPair pro in projectileList)
                     if (figlist[i].fig.CollidesWith(pro.fig))
@@ -89,8 +90,12 @@ namespace prog3_nie_obe
             }
 
             // probably dumb might not
-            string projectileFile = 
-                "C:\\Users\\n3wd4\\Documents\\Visual Studio 2015\\Projects\\Graphics\\Graphics\\prog5_nie_obe\\sphear.wrl";
+
+            //It is, but we'll keep it for now.
+            string projectileFile = ".\\..\\..\\..\\sphear.wrl";
+
+            //"C:\\Users\\Grant\\Academics\\Fall\\2017\\Graphics\\github\\Graphics\\nie_obe.wrl";
+//                "C:\\Users\\n3wd4\\Documents\\Visual Studio 2015\\Projects\\Graphics\\Graphics\\prog5_nie_obe\\sphear.wrl";
             projectileTemplate.fig = new Figure();
             projectileTemplate.fig.Load(projectileFile);
             projectileTemplate.movement = MovePattern.getProjectile();
@@ -106,6 +111,9 @@ namespace prog3_nie_obe
             foreach (var fmPair in figlist)
                 fmPair.movement.Move(fmPair.fig);
 
+            foreach (var fmPair in projectileList)
+                fmPair.movement.Move(fmPair.fig);
+
         }
 
         /**
@@ -119,6 +127,9 @@ namespace prog3_nie_obe
             foreach (var fmPair in figlist)
                 fmPair.fig.Show(ref lookat);
 
+            foreach (var fmPair in projectileList)
+                fmPair.fig.Show(ref lookat);
+
         }
 
         /**
@@ -129,8 +140,17 @@ namespace prog3_nie_obe
             foreach (var fmPair in figlist)
                 fmPair.fig.loadInitTranslation();
 
-        }
+            projectileList.RemoveAll(AllPairs);
+            
 
+            //foreach (var fmPair in projectileList)
+            //    projectileList.Remove(fmPair);
+
+        }
+        private static bool AllPairs(FigureMovementPair pair)
+        {
+            return true;
+        }
     }
 
 }

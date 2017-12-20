@@ -122,7 +122,7 @@ namespace prog3_nie_obe
             GL.Uniform1(ambientLocation, (float)globalAmbient);
 
             int lgtPosLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle, "LightPosition");
-            GL.Uniform3(lgtPosLocation, lightPos);
+            GL.Uniform3(lgtPosLocation, Ship.Instance.Position);
 
             int lgtColorLocation = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle, "LightColor");
             GL.Uniform3(lgtColorLocation, lightColor);
@@ -131,7 +131,19 @@ namespace prog3_nie_obe
                        "ViewMatrix");
             GL.UniformMatrix4(viewMatrixLocation, false, ref lookat);
 
+            int lgtSpotDirection = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle, "SpotDirection");
+            GL.Uniform3(lgtSpotDirection, Ship.Instance.Direction);
+
+            int lgtSpotAngle = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle, "spotCutOffAngle");
+            GL.Uniform1(lgtSpotAngle, (float)60);
+
+            int lgtSpotExponent = GL.GetUniformLocation(ShaderLoader.Instance.ProgramHandle, "spotExponent");
+            GL.Uniform1(lgtSpotExponent, (float)5);
+
+
             GL.UseProgram(0);
+
+
 
             //GL.MatrixMode(MatrixMode.Modelview);
 
@@ -236,7 +248,9 @@ namespace prog3_nie_obe
 
             //file.RootFolder = System.Environment.SpecialFolder.MyComputer;
             //file.SelectedPath = "K:\\Courses\\CSSE\\tianb\\cs3920_cs5920\\nie_obe";
-            file.SelectedPath = "C:\\Users\\n3wd4\\Documents\\Visual Studio 2015\\Projects\\Graphics\\Graphics\\prog5_nie_obe";
+            //file.SelectedPath = "C:\\Users\\n3wd4\\Documents\\Visual Studio 2015\\Projects\\Graphics\\Graphics\\prog5_nie_obe";
+            //file.SelectedPath = "C:\\Users\\n3wd4\\Documents\\Visual Studio 2015\\Projects\\Graphics\\Graphics\\prog5_nie_obe";
+            file.SelectedPath = "C:\\Users\\Grant\\Academics\\Fall\\2017\\Graphics\\github\\Graphics";
             if (file.ShowDialog() == DialogResult.OK)
             {
                 String path = file.SelectedPath;
@@ -339,9 +353,11 @@ namespace prog3_nie_obe
             if (downDown)
                 Ship.Instance.Move(-1);
             if (spaceDown)
-                figList.AddProjectile(Ship.Instance.Direction);
+                figList.AddProjectile(Ship.Instance.Direction, Ship.Instance.Position);
 
             figList.moveAll();
+
+            figList.CheckCollisions();
             
             redrawWorld();
 
