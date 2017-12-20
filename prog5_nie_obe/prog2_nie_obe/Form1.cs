@@ -226,6 +226,9 @@ namespace prog3_nie_obe
             scoreLbl.Text = "Score: " + score;
             timeLbl.Text = "Time Remaining: " + gameTime;
 
+            lblPos.Text = "Position: " + Ship.Instance.Position.ToString();
+            lblDir.Text = "Direction: " + Ship.Instance.Direction.ToString();
+
             tmrGame.Start();
         }
 
@@ -274,7 +277,12 @@ namespace prog3_nie_obe
             scoreLbl.Text = "Score: " + score;
 
             targLbl.Text = "Targets Remaining: " + figList.Count();
-            
+
+            lblPos.Text = "Position: " + Ship.Instance.Position.ToString();
+            lblDir.Text = "Direction: " + Ship.Instance.Direction.ToString();
+
+
+
             redrawWorld();
 
         }
@@ -360,6 +368,20 @@ namespace prog3_nie_obe
             gameTime--;
 
             timeLbl.Text = "Time Remaining: " + gameTime;
+        }
+
+        private void hELPToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            MessageBox.Show("W: Pitch Up\n" +
+                            "S: Pitch Down\n" +
+                            "A: Rotate Left\n" +
+                            "D: Rotate Right\n" +
+                            "Shift: Move Forward\n" +
+                            "Ctrl: Move Backwards\n" +
+                            "Space: Shoot!\n\n" +
+                            "Shoot all of the asteroids before time runs out!");
+
         }
     }
 }
