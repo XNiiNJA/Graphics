@@ -35,7 +35,7 @@ namespace prog3_nie_obe
         private const int DOWN_KEY = 17;
         private const int SPACE_KEY = 32;
 
-        private const int INIT_TIME = 5;
+        private const int INIT_TIME = 60;
 
         private static int score = 0;
 
@@ -230,6 +230,7 @@ namespace prog3_nie_obe
             lblDir.Text = "Direction: " + Ship.Instance.Direction.ToString();
 
             tmrGame.Start();
+            tmrMove.Start();
         }
 
         /**
@@ -360,14 +361,17 @@ namespace prog3_nie_obe
 
         private void tmrGame_Tick(object sender, EventArgs e)
         {
-            if (gameTime <= 0)
+            if (gameTime > 0)
+            {
+                gameTime--;
+                timeLbl.Text = "Time Remaining: " + gameTime;
+            }
+            else
             {
                 tmrGame.Stop();
+                tmrMove.Stop();
                 //game over
             }
-            gameTime--;
-
-            timeLbl.Text = "Time Remaining: " + gameTime;
         }
 
         private void hELPToolStripMenuItem_Click(object sender, EventArgs e)
