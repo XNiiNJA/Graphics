@@ -1,4 +1,5 @@
 ﻿
+using System;
 using System.Collections.Generic;
 using System.IO;
 using OpenTK;
@@ -36,11 +37,11 @@ namespace prog3_nie_obe
 
             projectileCopy.fig.forward = frwd;
             projectileCopy.fig.Translate(position);
-            
+
             projectileList.Add(projectileCopy);
         }
 
-        public void CheckCollisions()
+        public int CheckCollisions()
         {
             /**
              * It was a double-for loop that removed colliding objects if an object from one list collided with an object from the other list
@@ -50,6 +51,7 @@ namespace prog3_nie_obe
             List<FigureMovementPair> reverseList = figlist;
             reverseList.Reverse();
 
+            int score = 0;
 
             //foreach (FigureMovementPair fig in reverseList)
             for (int i = figlist.Count - 1; i > 0; i--)
@@ -59,10 +61,11 @@ namespace prog3_nie_obe
                     {
                         figlist.Remove(figlist[i]);
                         projectileList.Remove(pro);
+                        score++;
                         break;
                     }
             }
-
+            return score;
         }
 
         /// <summary>
@@ -95,7 +98,7 @@ namespace prog3_nie_obe
             string projectileFile = ".\\..\\..\\..\\sphear.wrl";
 
             //"C:\\Users\\Grant\\Academics\\Fall\\2017\\Graphics\\github\\Graphics\\nie_obe.wrl";
-//                "C:\\Users\\n3wd4\\Documents\\Visual Studio 2015\\Projects\\Graphics\\Graphics\\prog5_nie_obe\\sphear.wrl";
+            //                "C:\\Users\\n3wd4\\Documents\\Visual Studio 2015\\Projects\\Graphics\\Graphics\\prog5_nie_obe\\sphear.wrl";
             projectileTemplate.fig = new Figure();
             projectileTemplate.fig.Load(projectileFile);
             projectileTemplate.movement = MovePattern.getProjectile();
@@ -141,7 +144,7 @@ namespace prog3_nie_obe
                 fmPair.fig.loadInitTranslation();
 
             projectileList.RemoveAll(AllPairs);
-            
+
 
             //foreach (var fmPair in projectileList)
             //    projectileList.Remove(fmPair);
@@ -150,6 +153,11 @@ namespace prog3_nie_obe
         private static bool AllPairs(FigureMovementPair pair)
         {
             return true;
+        }
+
+        internal int Count()
+        {
+            return figlist.Count;
         }
     }
 
