@@ -33,6 +33,7 @@ namespace prog3_nie_obe
 
             int index = (int)(rand.NextDouble() * (double)MOVE_PATTERN_COUNT);
             //int index = 4;
+            
             switch (index)
             {
 
@@ -132,14 +133,25 @@ namespace prog3_nie_obe
      */
     class MovePatternTwist : MovePattern
     {
+        private bool firstPass = true;
+
+        private const int RAND_RANGE = 10;
         
+
         public override void Move(Figure fig)
         {
             //Make sure we are orbiting the axis
             float orbitdist = (float)Math.Sqrt(Math.Pow(fig.CurrentCenter.X, 2.0f) + Math.Pow(fig.CurrentCenter.Y, 2.0f));
 
+            if (firstPass)
+            {
+                
 
-            if (Math.Abs(orbitdist) < 4.0f)
+
+            }
+
+
+            /*if (Math.Abs(orbitdist) < 4.0f)
             {
 
                 //Push us out from the line a bit so we can perform an orbit.
@@ -147,11 +159,14 @@ namespace prog3_nie_obe
 
             }
             else
-            {
+            {*/
 
-                fig.RotateGlobalZ(0.1f);
+            //    fig.RotateGlobalZ(0.1f);
 
-            }
+            fig.OrbitPoint(new Vector3(1, 0, 0), new Vector3(0, 0, -20), 0.1f);
+
+
+            //}
         }
 
     }

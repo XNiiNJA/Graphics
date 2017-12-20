@@ -77,6 +77,8 @@ namespace prog3_nie_obe
         private void Form1_Load(object sender, EventArgs e)
         {
 
+            figList.LoadFigures(".\\..\\..\\..\\", 10);
+            
         }
 
         /**
@@ -167,7 +169,7 @@ namespace prog3_nie_obe
             if (!ShaderLoader.Instance.Load(vertShaderFileName, fragShaderFileName))
                 MessageBox.Show(ShaderLoader.Instance.LastLoadError);
 
-            globalAmbient = (Decimal)0.1;
+            globalAmbient = (Decimal)0.0;
 
             figList = new FigureList();
 
@@ -194,7 +196,7 @@ namespace prog3_nie_obe
             //file.SelectedPath = "K:\\Courses\\CSSE\\tianb\\cs3920_cs5920\\nie_obe";
             //file.SelectedPath = "C:\\Users\\n3wd4\\Documents\\Visual Studio 2015\\Projects\\Graphics\\Graphics\\prog5_nie_obe";
             //file.SelectedPath = "C:\\Users\\n3wd4\\Documents\\Visual Studio 2015\\Projects\\Graphics\\Graphics\\prog5_nie_obe";
-            file.SelectedPath = "C:\\Users\\Grant\\Academics\\Fall\\2017\\Graphics\\github\\Graphics";
+            /*file.SelectedPath = "C:\\Users\\Grant\\Academics\\Fall\\2017\\Graphics\\github\\Graphics";
             if (file.ShowDialog() == DialogResult.OK)
             {
                 String path = file.SelectedPath;
@@ -203,7 +205,7 @@ namespace prog3_nie_obe
 
             }
 
-            redrawWorld();
+            redrawWorld();*/
 
         }
 

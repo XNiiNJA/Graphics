@@ -54,12 +54,12 @@ namespace prog3_nie_obe
             int score = 0;
 
             //foreach (FigureMovementPair fig in reverseList)
-            for (int i = figlist.Count - 1; i > 0; i--)
+            for (int i = figlist.Count; i > 0; i--)
             {
                 foreach (FigureMovementPair pro in projectileList)
-                    if (figlist[i].fig.CollidesWith(pro.fig))
+                    if (figlist[i - 1].fig.CollidesWith(pro.fig))
                     {
-                        figlist.Remove(figlist[i]);
+                        figlist.Remove(figlist[i - 1]);
                         projectileList.Remove(pro);
                         score++;
                         break;
@@ -72,7 +72,7 @@ namespace prog3_nie_obe
         /// Loads all figures from the specified folder
         /// </summary>
         /// <param name="folderName">the complete file path to the folder containing the figures</param>
-        public void LoadFigures(string folderName)
+        public void LoadFigures(string folderName, int num)
         {
 
             string[] files = Directory.GetFiles(folderName, "*.wrl");
@@ -91,6 +91,30 @@ namespace prog3_nie_obe
                 figlist.Add(fmPair);
 
             }
+
+            Random rand = new Random((int)DateTime.Now.Ticks);
+
+            
+            //Ensure there are at least 'num' figures by copying.
+
+            for (int i = figlist.Count; i < num; i++)
+            {
+
+                int index = (int)(rand.NextDouble() * (double)figlist.Count);
+
+                Figure fig = new Figure(figlist[index].fig);
+
+                FigureMovementPair newPair = new FigureMovementPair();
+
+                newPair.fig = fig;
+
+                newPair.movement = MovePattern.getRandom();
+                
+                figlist.Add(newPair);
+                
+            }
+
+            
 
             // probably dumb might not
 
